@@ -3,13 +3,12 @@ package model.accounts;
 import java.math.BigDecimal;
 
 public class SavingsAccount extends Account {
-    private final double interest; //annual percent earned
 
     public SavingsAccount(double amount) {
         super(BigDecimal.valueOf(amount));
         super.transactionFee = new BigDecimal("0.50");
         super.annualFee = new BigDecimal("5.00");
-        this.interest = 2.50;
+        super.interest = 2.50; //annual percent earned
     }
 
     @Override
@@ -23,4 +22,11 @@ public class SavingsAccount extends Account {
         super.balance = super.balance.multiply(interestMultiplier);
 
     }
+
+    @Override
+    public String getAccountInfo() {
+        return "Savings - " + accountNumber;
+    }
+
+
 }

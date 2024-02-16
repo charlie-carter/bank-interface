@@ -1,9 +1,10 @@
 package model.assets;
 
-public class Asset {
+public abstract class Asset {
 
     protected double value;
     protected double interest;
+    protected int accountNumber;
 
     public double getInterest() {
         return interest;
@@ -16,4 +17,8 @@ public class Asset {
     private void addInterest() {
         value += value * interest / 100;
     }
+
+    public abstract String getAsset();
+
+    public abstract void getAssetInfo();
 }

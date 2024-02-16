@@ -8,12 +8,18 @@ public class ChequingAccount extends Account {
         super(BigDecimal.valueOf(amount));
         super.transactionFee = new BigDecimal(BigInteger.ZERO);
         super.annualFee = new BigDecimal("10.00");
+        super.interest = 0.00;
 
     }
 
     @Override
     public void withdraw(BigDecimal amount) {
         super.balance = super.balance.subtract(amount);
+    }
+
+    @Override
+    public String getAccountInfo() {
+        return "Chequing - " + accountNumber;
     }
 }
 

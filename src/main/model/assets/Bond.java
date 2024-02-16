@@ -33,4 +33,25 @@ public class Bond extends Asset {
     private void addInterest() {
         value += value * interest / 100;
     }
+
+    @Override
+    public String getAsset() {
+        return "Bond - Asset No: " + accountNumber;
+    }
+
+    @Override
+    public void getAssetInfo() {
+        System.out.println("Bond:");
+        System.out.println("Value:" + this.value);
+        System.out.println("Issuer:" + this.issuer);
+        System.out.println("Year of Maturity:" + this.yearOfMaturity);
+        System.out.println("Interest: " + this.interest);
+        if (secured) {
+            System.out.println("Secured asset");
+        } else {
+            System.out.println("Unsecured asset");
+        }
+
+
+    }
 }

@@ -22,13 +22,26 @@ public class Stock extends Asset {
         return shares;
     }
 
-
-
-
-
     public boolean isVotingStock() {
         return votingStock;
     }
 
 
+    @Override
+    public void getAssetInfo() {
+        System.out.println("Stock:" + ticker);
+        System.out.println("Value: " + value);
+        System.out.println("No. of Shares: " + shares);
+        System.out.println("Expected annual return: " + interest);
+        if (votingStock) {
+            System.out.println("Voting Stock");
+        } else {
+            System.out.println("Preferred Stock");
+        }
+    }
+
+    @Override
+    public String getAsset() {
+        return "Stock - " + ticker + " - Asset No: " + accountNumber;
+    }
 }

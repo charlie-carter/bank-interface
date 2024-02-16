@@ -10,12 +10,12 @@ public class Client {
     ArrayList<Asset> assets;
 
     private String name;
-    private int accountNumber;
+    private int clientNumber;
     private String password;
 
-    public Client(String name, int accountNumber, String password) {
+    public Client(String name, int clientNumber, String password) {
         this.name = name;
-        this.accountNumber = accountNumber;
+        this.clientNumber = clientNumber;
         this.password = password;
     }
 
@@ -31,7 +31,19 @@ public class Client {
         return name;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
+    public String getPassword() {
+        return password;
+    }
+
+    public int getClientNumber() {
+        return clientNumber;
+    }
+
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+
+    public ArrayList<Asset> getAssets() {
+        return assets;
     }
 }

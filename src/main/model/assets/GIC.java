@@ -20,4 +20,21 @@ public class GIC extends Asset {
         return redeemable;
     }
 
+    @Override
+    public void getAssetInfo() {
+        System.out.println("Guaranteed Investment Certificate:");
+        System.out.println("Value: " + this.value);
+        System.out.println("Term: " + this.term);
+        System.out.println("Rate: " + this.interest);
+        if (redeemable) {
+            System.out.println("Redeemable GIC");
+        } else {
+            System.out.println("Non-redeemable GIC");
+        }
+    }
+
+    @Override
+    public String getAsset() {
+        return "GIC - Asset No: " + accountNumber;
+    }
 }
