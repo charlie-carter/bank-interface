@@ -17,6 +17,8 @@ public class Client {
         this.name = name;
         this.clientNumber = clientNumber;
         this.password = password;
+        this.accounts = new ArrayList<>();
+        this.assets = new ArrayList<>();
     }
 
     public void addAccount(Account account) {
@@ -45,5 +47,9 @@ public class Client {
 
     public ArrayList<Asset> getAssets() {
         return assets;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

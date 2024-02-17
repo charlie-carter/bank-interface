@@ -1,10 +1,13 @@
 package model.assets;
 
+import java.util.Random;
+
 public class Stock extends Asset {
     private String ticker;
     private int shares;
 
     private boolean votingStock;
+    Random rnd = new Random();
 
     public Stock(String ticker, int shares, double value, double expectedReturn, boolean votingStock) {
         this.ticker = ticker;
@@ -12,6 +15,7 @@ public class Stock extends Asset {
         this.value = value;
         this.interest = expectedReturn;
         this.votingStock = votingStock;
+        this.accountNumber = 100000 + rnd.nextInt(900000);
     }
 
     public String getTicker() {
@@ -38,6 +42,7 @@ public class Stock extends Asset {
         } else {
             System.out.println("Preferred Stock");
         }
+        System.out.println("q to exit");
     }
 
     @Override

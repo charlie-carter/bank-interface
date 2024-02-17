@@ -3,6 +3,8 @@ package model.accounts;
 import model.exceptions.InvalidAmountException;
 
 import java.math.BigDecimal;
+import java.util.Random;
+
 
 public abstract class Account {
     protected BigDecimal balance = new BigDecimal(0.00);
@@ -10,9 +12,11 @@ public abstract class Account {
     protected BigDecimal transactionFee;
     protected int accountNumber;
     protected double interest;
+    Random rnd = new Random();
 
     Account(BigDecimal amount) {
         this.balance = amount;
+        this.accountNumber = 100000 + rnd.nextInt(900000);
     }
 
     //REQUIRES: amount >= 0

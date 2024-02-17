@@ -19,7 +19,7 @@ public class ChequingAccount extends Account {
 
     @Override
     public String getAccountInfo() {
-        return "Chequing - " + accountNumber;
+        return "Chequing - $" + balance;
     }
 }
 

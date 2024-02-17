@@ -25,7 +25,7 @@ public class SavingsAccount extends Account {
 
     @Override
     public String getAccountInfo() {
-        return "Savings - " + accountNumber;
+        return "Savings - $" + balance;
     }
 
 

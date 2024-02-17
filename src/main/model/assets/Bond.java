@@ -1,5 +1,7 @@
 package model.assets;
 
+import java.util.Random;
+
 public class Bond extends Asset {
 
 
@@ -7,6 +9,7 @@ public class Bond extends Asset {
     private String issuer;
 
     private boolean secured;
+    Random rnd = new Random();
 
     public Bond(double val, int yom, String issuer, double interest, boolean sec) {
         this.value = val;
@@ -14,6 +17,7 @@ public class Bond extends Asset {
         this.issuer = issuer;
         this.interest = interest;
         this.secured = sec;
+        this.accountNumber = 100000 + rnd.nextInt(900000);
 
     }
 
@@ -41,17 +45,17 @@ public class Bond extends Asset {
 
     @Override
     public void getAssetInfo() {
-        System.out.println("Bond:");
-        System.out.println("Value:" + this.value);
-        System.out.println("Issuer:" + this.issuer);
-        System.out.println("Year of Maturity:" + this.yearOfMaturity);
-        System.out.println("Interest: " + this.interest);
+        System.out.println("Bond: ");
+        System.out.println("Value: " + this.value);
+        System.out.println("Issuer: " + this.issuer);
+        System.out.println("Year of Maturity: " + this.yearOfMaturity);
+        System.out.println("Yield: " + this.interest);
         if (secured) {
             System.out.println("Secured asset");
         } else {
             System.out.println("Unsecured asset");
         }
-
+        System.out.println("q to exit");
 
     }
 }

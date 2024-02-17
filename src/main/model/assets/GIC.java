@@ -1,8 +1,11 @@
 package model.assets;
 
+import java.util.Random;
+
 public class GIC extends Asset {
     private int term;
     private boolean redeemable;
+    Random rnd = new Random();
 
 
     public GIC(int term, boolean redeemable, double rate, double value) {
@@ -10,6 +13,7 @@ public class GIC extends Asset {
         this.redeemable = redeemable;
         this.interest = rate;
         this.value = value;
+        this.accountNumber = 100000 + rnd.nextInt(900000);
     }
 
     public int getTerm() {
@@ -31,6 +35,7 @@ public class GIC extends Asset {
         } else {
             System.out.println("Non-redeemable GIC");
         }
+        System.out.println("q to exit");
     }
 
     @Override
