@@ -1,13 +1,15 @@
 package model.accounts;
 
 import model.exceptions.InvalidAmountException;
+import org.json.JSONObject;
+import persistence.Writable;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Random;
 
 
-public abstract class Account {
+public abstract class Account implements Writable {
     protected BigDecimal balance;
     protected BigDecimal annualFee;
     protected BigDecimal transactionFee;
@@ -56,5 +58,9 @@ public abstract class Account {
 
     public int getAccountNumber() {
         return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

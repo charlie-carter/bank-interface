@@ -1,6 +1,7 @@
 package model.accounts;
 
 import model.exceptions.InvalidAmountException;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -44,4 +45,13 @@ public class SavingsAccount extends Account {
     }
 
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("type", "Savings");
+        json.put("balance", balance);
+        json.put("acctnum", accountNumber);
+
+        return json;
+    }
 }

@@ -1,5 +1,7 @@
 package model.assets;
 
+import org.json.JSONObject;
+
 import java.math.BigDecimal;
 import java.util.Random;
 
@@ -56,5 +58,17 @@ public class Bond extends Asset {
     @Override
     public String getAsset() {
         return "Bond - Asset No: " + accountNumber;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("type", "Bond");
+        json.put("value", value.doubleValue());
+        json.put("yom", yearOfMaturity);
+        json.put("yield", interest);
+        json.put("issuer", issuer);
+        json.put("secured", secured);
+        return json;
     }
 }

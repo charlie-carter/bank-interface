@@ -9,10 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BondTest {
 
     private Bond testBond;
+    private Bond testBond2;
 
     @BeforeEach
     void setup() {
         testBond = new Bond(500.75, 2040, "Boeing", 4.8, true);
+        testBond2 = new Bond(500.75, 2040, "Boeing", 4.8, false);
+
     }
 
     @Test
@@ -39,8 +42,9 @@ public class BondTest {
     @Test
     void testGetAssetInfo() {
         String expected = "Bond: \nValue: 500.75\nIssuer: Boeing\nYear of Maturity: 2040\nYield: 4.8%\nSecured asset\nq to quit";
-
         assertEquals(expected, testBond.getAssetInfo());
+        expected = "Bond: \nValue: 500.75\nIssuer: Boeing\nYear of Maturity: 2040\nYield: 4.8%\nUnsecured asset\nq to quit";
+        assertEquals(expected, testBond2.getAssetInfo());
 
     }
 

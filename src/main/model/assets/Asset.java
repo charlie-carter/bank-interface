@@ -1,10 +1,12 @@
 package model.assets;
 
+import persistence.Writable;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 
-public abstract class Asset {
+public abstract class Asset implements Writable {
 
     protected BigDecimal value;
     protected double interest;

@@ -1,6 +1,7 @@
 package model.accounts;
 
 import model.exceptions.InvalidAmountException;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -32,6 +33,19 @@ public class ChequingAccount extends Account {
     public String getAccountInfo() {
         return "Chequing - $" + balance;
     }
+
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("type", "Chequing");
+        json.put("balance", balance);
+        json.put("acctnum", accountNumber);
+
+
+        return json;
+    }
+
 }
 
 

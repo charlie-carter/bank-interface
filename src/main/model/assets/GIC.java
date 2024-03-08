@@ -1,5 +1,7 @@
 package model.assets;
 
+import org.json.JSONObject;
+
 import java.math.BigDecimal;
 import java.util.Random;
 
@@ -40,12 +42,23 @@ public class GIC extends Asset {
             securedString = "Non-redeemable GIC \n";
         }
 
-        return gicString + valueString + rateString + securedString + "q to quit";
+        return gicString + valueString + termString + rateString + securedString + "q to quit";
     }
 
     //Returns short-form GIC information.
     @Override
     public String getAsset() {
         return "GIC - Asset No: " + accountNumber;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("type", "GIC");
+        json.put("value", value.doubleValue());
+        json.put("term", term);
+        json.put("rate", interest);
+        json.put("redeemable", redeemable);
+        return json;
     }
 }

@@ -1,13 +1,8 @@
 package ui;
 
 import model.Client;
-import model.accounts.Account;
-import model.accounts.ChequingAccount;
-import model.accounts.SavingsAccount;
-import model.assets.Asset;
-import model.assets.Bond;
-import model.assets.GIC;
-import model.assets.Stock;
+import model.accounts.*;
+import model.assets.*;
 import model.exceptions.InvalidAmountException;
 
 import java.math.BigDecimal;

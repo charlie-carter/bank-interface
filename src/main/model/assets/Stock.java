@@ -1,6 +1,9 @@
 package model.assets;
 
+import org.json.JSONObject;
+
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 public class Stock extends Asset {
@@ -52,5 +55,18 @@ public class Stock extends Asset {
     @Override
     public String getAsset() {
         return "Stock - " + ticker + " - Asset No: " + accountNumber;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        value = value.divide(BigDecimal.valueOf(shares), 2, RoundingMode.DOWN);
+        JSONObject json = new JSONObject();
+        json.put("type", "Stock");
+        json.put("shareprice", value.doubleValue());
+        json.put("ticker", ticker);
+        json.put("return", interest);
+        json.put("shares", shares);
+        json.put("secured", votingStock);
+        return json;
     }
 }

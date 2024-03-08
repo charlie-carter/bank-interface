@@ -1,0 +1,16 @@
+{
+    "assets": [{
+        "redeemable": false,
+        "rate": 3.6,
+        "term": 25,
+        "type": "GIC",
+        "value": 30000
+    }],
+    "pass": "hello",
+    "name": "John Lastname",
+    "accounts": [{
+        "balance": 5000,
+        "acctnum": 490561,
+        "type": "Chequing"
+    }]
+}

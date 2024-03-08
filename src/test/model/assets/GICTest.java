@@ -11,10 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GICTest {
 
     private GIC testGIC;
+    private GIC testGIC2;
 
     @BeforeEach
     void setup() {
         testGIC = new GIC(30, false, 8.6, 5000);
+        testGIC2 = new GIC(30, true, 8.6, 5000);
     }
 
     @Test
@@ -46,8 +48,11 @@ public class GICTest {
         String rateString = "Rate: 8.6%\n";
         securedString = "Non-redeemable GIC \n";
 
-        String expected = gicString + valueString + rateString + securedString + "q to quit";
-
+        String expected = gicString + valueString + termString + rateString + securedString + "q to quit";
         assertEquals(expected, testGIC.getAssetInfo());
+        securedString = "Redeemable GIC \n";
+        expected = gicString + valueString + termString + rateString + securedString + "q to quit";
+
+        assertEquals(expected, testGIC2.getAssetInfo());
     }
 }
