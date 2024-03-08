@@ -3,11 +3,12 @@ package model.accounts;
 import model.exceptions.InvalidAmountException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 
 public abstract class Account {
-    protected BigDecimal balance = new BigDecimal(0.00);
+    protected BigDecimal balance;
     protected BigDecimal annualFee;
     protected BigDecimal transactionFee;
     protected int accountNumber;
@@ -16,6 +17,7 @@ public abstract class Account {
 
     Account(BigDecimal amount) {
         this.balance = amount;
+        balance.setScale(2, RoundingMode.DOWN);
         this.accountNumber = 100000 + rnd.nextInt(900000);
     }
 
@@ -30,12 +32,12 @@ public abstract class Account {
         }
     }
 
-    public abstract void withdraw(BigDecimal amount);
+    public abstract void withdraw(BigDecimal amount) throws InvalidAmountException;
 
     public abstract String getAccountInfo();
 
-    public BigDecimal getBalance() {
-        return balance;
+    public double getBalance() {
+        return balance.doubleValue();
     }
 
     public double getInterest() {

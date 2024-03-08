@@ -4,6 +4,7 @@ import model.accounts.Account;
 import model.assets.Asset;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Client {
     ArrayList<Account> accounts;
@@ -12,10 +13,11 @@ public class Client {
     private String name;
     private int clientNumber;
     private String password;
+    Random rnd = new Random();
 
-    public Client(String name, int clientNumber, String password) {
+    public Client(String name, String password) {
         this.name = name;
-        this.clientNumber = clientNumber;
+        this.clientNumber = 1000000 + rnd.nextInt(9000000);
         this.password = password;
         this.accounts = new ArrayList<>();
         this.assets = new ArrayList<>();

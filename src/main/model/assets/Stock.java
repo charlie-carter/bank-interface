@@ -1,5 +1,7 @@
 package model.assets;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 public class Stock extends Asset {
@@ -9,13 +11,13 @@ public class Stock extends Asset {
     private boolean votingStock;
     Random rnd = new Random();
 
-    public Stock(String ticker, int shares, double value, double expectedReturn, boolean votingStock) {
+    public Stock(String ticker, int shares, double sharePrice, double expectedReturn, boolean votingStock) {
         this.ticker = ticker;
         this.shares = shares;
-        this.value = value;
+        this.value = BigDecimal.valueOf(sharePrice * shares);
         this.interest = expectedReturn;
         this.votingStock = votingStock;
-        this.accountNumber = 100000 + rnd.nextInt(900000);
+        this.accountNumber = 1000000 + rnd.nextInt(9000000);
     }
 
     public String getTicker() {

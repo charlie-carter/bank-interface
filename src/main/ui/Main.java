@@ -11,7 +11,7 @@ public class Main {
 
         Client testUser;
         //Account testAccount = new SavingsAccount(232.12);
-        testUser = new Client("John Lastname", 1234, "password123");
+        testUser = new Client("John Lastname", "password123");
        // testUser.addAccount(testAccount);
         new BankUserInterface(testUser);
     }

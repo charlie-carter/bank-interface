@@ -1,5 +1,7 @@
 package model.accounts;
 
+import model.exceptions.InvalidAmountException;
+
 import java.math.BigDecimal;
 
 public class SavingsAccount extends Account {
@@ -12,9 +14,14 @@ public class SavingsAccount extends Account {
     }
 
     @Override
-    public void withdraw(BigDecimal amount) {
+    public void withdraw(BigDecimal amount) throws InvalidAmountException {
         super.balance = super.balance.subtract(amount.add(transactionFee));
-
+        BigDecimal withdrawalLimit = new BigDecimal(String.valueOf(super.balance.subtract(transactionFee)));
+        if (amount.compareTo(withdrawalLimit) == 1) {
+            throw new InvalidAmountException();
+        } else {
+            super.balance = super.balance.subtract(amount.add(transactionFee));
+        }
     }
 
     private void addInterest() {

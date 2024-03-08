@@ -159,7 +159,11 @@ public class BankUserInterface {
     private void withdrawMoney(Account a) {
         System.out.println("Enter amount: ");
         double withdrawAmount = input.nextDouble();
-        a.withdraw(BigDecimal.valueOf(withdrawAmount));
+        try {
+            a.withdraw(BigDecimal.valueOf(withdrawAmount));
+        } catch (InvalidAmountException e) {
+            System.out.println("Invalid Amount");
+        }
 
         System.out.println("New account balance: $" + a.getBalance());
     }

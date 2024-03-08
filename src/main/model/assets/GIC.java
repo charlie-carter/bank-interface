@@ -1,5 +1,7 @@
 package model.assets;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 public class GIC extends Asset {
@@ -12,8 +14,8 @@ public class GIC extends Asset {
         this.term = term;
         this.redeemable = redeemable;
         this.interest = rate;
-        this.value = value;
-        this.accountNumber = 100000 + rnd.nextInt(900000);
+        this.value = BigDecimal.valueOf(value);
+        this.accountNumber = 1000000 + rnd.nextInt(9000000);
     }
 
     public int getTerm() {

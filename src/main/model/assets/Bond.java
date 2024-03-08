@@ -1,5 +1,7 @@
 package model.assets;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 public class Bond extends Asset {
@@ -12,14 +14,16 @@ public class Bond extends Asset {
     Random rnd = new Random();
 
     public Bond(double val, int yom, String issuer, double interest, boolean sec) {
-        this.value = val;
+        this.value = BigDecimal.valueOf(val);
         this.yearOfMaturity = yom;
         this.issuer = issuer;
         this.interest = interest;
         this.secured = sec;
-        this.accountNumber = 100000 + rnd.nextInt(900000);
+        this.accountNumber = 1000000 + rnd.nextInt(9000000);
 
     }
+
+
 
     public int getYearOfMaturity() {
         return yearOfMaturity;
@@ -34,9 +38,11 @@ public class Bond extends Asset {
         return secured;
     }
 
-    private void addInterest() {
-        value += value * interest / 100;
-    }
+    //private void addInterest() {
+      //  value += value * interest / 100;
+    //}
+
+
 
     @Override
     public String getAsset() {
