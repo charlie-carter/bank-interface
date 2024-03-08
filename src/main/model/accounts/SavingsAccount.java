@@ -3,6 +3,7 @@ package model.accounts;
 import model.exceptions.InvalidAmountException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class SavingsAccount extends Account {
 
@@ -13,23 +14,30 @@ public class SavingsAccount extends Account {
         super.interest = 2.50; //annual percent earned
     }
 
+    //MODIFIES: this
+    //EFFECTS: subtracts the chosen amount and transaction fee from this account.
+    // Throws InvalidAmountException if the amount wished to be withdrawn + the transaction fee
+    // is greater than the current account balance.
     @Override
     public void withdraw(BigDecimal amount) throws InvalidAmountException {
-        super.balance = super.balance.subtract(amount.add(transactionFee));
+
         BigDecimal withdrawalLimit = new BigDecimal(String.valueOf(super.balance.subtract(transactionFee)));
         if (amount.compareTo(withdrawalLimit) == 1) {
             throw new InvalidAmountException();
         } else {
-            super.balance = super.balance.subtract(amount.add(transactionFee));
+            super.balance = super.balance.subtract(amount.add(transactionFee)).setScale(2, RoundingMode.DOWN);;
         }
     }
 
-    private void addInterest() {
+    //MODIFIES: this
+    //EFFECTS: Adds the account's interest rate to the balance when called
+    public void addInterest() {
         BigDecimal interestMultiplier = BigDecimal.valueOf((interest / 100) + 1);
-        super.balance = super.balance.multiply(interestMultiplier);
+        super.balance = super.balance.multiply(interestMultiplier).setScale(2, RoundingMode.DOWN);;
 
     }
 
+    //Returns the account type and balance
     @Override
     public String getAccountInfo() {
         return "Savings - $" + balance;

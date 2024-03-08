@@ -1,12 +1,11 @@
 package model.assets;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Random;
 
 public class GIC extends Asset {
-    private int term;
-    private boolean redeemable;
+    private final int term;
+    private final boolean redeemable;
     Random rnd = new Random();
 
 
@@ -18,6 +17,7 @@ public class GIC extends Asset {
         this.accountNumber = 1000000 + rnd.nextInt(9000000);
     }
 
+    //Getters
     public int getTerm() {
         return term;
     }
@@ -26,20 +26,24 @@ public class GIC extends Asset {
         return redeemable;
     }
 
+    //Returns long-form GIC information.
     @Override
-    public void getAssetInfo() {
-        System.out.println("Guaranteed Investment Certificate:");
-        System.out.println("Value: " + this.value);
-        System.out.println("Term: " + this.term);
-        System.out.println("Rate: " + this.interest);
+    public String getAssetInfo() {
+        String securedString;
+        String gicString = "Guaranteed Investment Certificate: \n";
+        String valueString = "Value: " + this.value + "$\n";
+        String termString = "Term: " + this.term + " years\n";
+        String rateString = "Rate: " + this.interest + "%\n";
         if (redeemable) {
-            System.out.println("Redeemable GIC");
+            securedString = "Redeemable GIC \n";
         } else {
-            System.out.println("Non-redeemable GIC");
+            securedString = "Non-redeemable GIC \n";
         }
-        System.out.println("q to exit");
+
+        return gicString + valueString + rateString + securedString + "q to quit";
     }
 
+    //Returns short-form GIC information.
     @Override
     public String getAsset() {
         return "GIC - Asset No: " + accountNumber;

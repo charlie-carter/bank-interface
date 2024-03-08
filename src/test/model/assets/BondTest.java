@@ -36,13 +36,13 @@ public class BondTest {
         assertEquals("Bond - Asset No: " + testBond.getAccountNumber(), testBond.getAsset());
     }
 
-//    @Test
-//    void testGetAssetInfo() {
-//        String expected = "Bond: \nValue: 500.75\nIssuer: Boeing\nYear of Maturity: 2040\nYield: 4.8\nSecured asset\nq to quit";
-//
-//        assertEquals(expected, testBond.getAssetInfo());
-//
-//    }
+    @Test
+    void testGetAssetInfo() {
+        String expected = "Bond: \nValue: 500.75\nIssuer: Boeing\nYear of Maturity: 2040\nYield: 4.8%\nSecured asset\nq to quit";
+
+        assertEquals(expected, testBond.getAssetInfo());
+
+    }
 
 
 }

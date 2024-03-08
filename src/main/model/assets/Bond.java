@@ -1,16 +1,12 @@
 package model.assets;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Random;
 
 public class Bond extends Asset {
-
-
-    private int yearOfMaturity;
-    private String issuer;
-
-    private boolean secured;
+    private final int yearOfMaturity;
+    private final String issuer;
+    private final boolean secured;
     Random rnd = new Random();
 
     public Bond(double val, int yom, String issuer, double interest, boolean sec) {
@@ -24,7 +20,7 @@ public class Bond extends Asset {
     }
 
 
-
+    //getters:
     public int getYearOfMaturity() {
         return yearOfMaturity;
     }
@@ -38,30 +34,27 @@ public class Bond extends Asset {
         return secured;
     }
 
-    //private void addInterest() {
-      //  value += value * interest / 100;
-    //}
 
+    //Returns long-form bond information
+    @Override
+    public String getAssetInfo() {
+        String securedString;
+        String bondString = "Bond: \n";
+        String valueString = "Value: " + this.value + "\n";
+        String issuerString = "Issuer: " + this.issuer + "\n";
+        String yomString = "Year of Maturity: " + this.yearOfMaturity + "\n";
+        String yieldString = "Yield: " + this.interest + "%\n";
+        if (secured) {
+            securedString = "Secured asset\n";
+        } else {
+            securedString = "Unsecured asset\n";
+        }
+        return bondString + valueString + issuerString + yomString + yieldString + securedString + "q to quit";
+    }
 
-
+    //Returns short-form bond information.
     @Override
     public String getAsset() {
         return "Bond - Asset No: " + accountNumber;
-    }
-
-    @Override
-    public void getAssetInfo() {
-        System.out.println("Bond: ");
-        System.out.println("Value: " + this.value);
-        System.out.println("Issuer: " + this.issuer);
-        System.out.println("Year of Maturity: " + this.yearOfMaturity);
-        System.out.println("Yield: " + this.interest);
-        if (secured) {
-            System.out.println("Secured asset");
-        } else {
-            System.out.println("Unsecured asset");
-        }
-        System.out.println("q to exit");
-
     }
 }

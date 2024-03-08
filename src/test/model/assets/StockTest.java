@@ -38,5 +38,19 @@ public class StockTest {
         assertEquals("Stock - BA - Asset No: " + testStock.getAccountNumber(), testStock.getAsset());
     }
 
+    @Test
+    void testGetAssetInfo() {
+        String securedString;
+        String stockString = "Stock: BA\n";
+        String valueString = "Value: 5690.44$\n";
+        String sharesString = "No. of Shares: 28\n";
+        String yieldString = "Expected annual return: -8.2%\n";
+        securedString = "Preferred stock \n";
+
+        String expected = stockString + valueString + sharesString + yieldString + securedString + "q to quit";
+
+        assertEquals(expected, testStock.getAssetInfo());
+    }
+
 
 }

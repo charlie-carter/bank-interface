@@ -36,4 +36,18 @@ public class GICTest {
     void testGetAsset() {
         assertEquals("GIC - Asset No: " + testGIC.getAccountNumber(), testGIC.getAsset());
     }
+
+    @Test
+    void testGetAssetInfo() {
+        String securedString;
+        String gicString = "Guaranteed Investment Certificate: \n";
+        String valueString = "Value: 5000.0$\n";
+        String termString = "Term: 30 years\n";
+        String rateString = "Rate: 8.6%\n";
+        securedString = "Non-redeemable GIC \n";
+
+        String expected = gicString + valueString + rateString + securedString + "q to quit";
+
+        assertEquals(expected, testGIC.getAssetInfo());
+    }
 }

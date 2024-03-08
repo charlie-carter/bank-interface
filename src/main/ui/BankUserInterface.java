@@ -28,6 +28,7 @@ public class BankUserInterface {
 
     }
 
+    //Main bank interface
     private void runInterface() {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
@@ -53,6 +54,7 @@ public class BankUserInterface {
         }
     }
 
+    //Login menu UI
     private boolean login() {
         String selection = "";
         Scanner passwordInput = new Scanner(System.in);
@@ -66,6 +68,7 @@ public class BankUserInterface {
         return !selection.equals("q");
     }
 
+    //Main menu options
     private void printMainMenu() {
         System.out.println("1 to view accounts");
         System.out.println("2 to view assets");
@@ -74,6 +77,7 @@ public class BankUserInterface {
 
     }
 
+    //Prints out accounts under current client, prompts user to enter an account to see more detail
     private void accountMenu() {
         System.out.println("Accounts:");
 
@@ -100,6 +104,7 @@ public class BankUserInterface {
         }
     }
 
+    //Choose options to manage assets
     private void assetMenu() {
         System.out.println("Assets:");
 
@@ -119,7 +124,7 @@ public class BankUserInterface {
             } else {
                 try {
                     int acctNum = Integer.parseInt(assetOption);
-                    client.getAssets().get(acctNum - 1).getAssetInfo();
+                    System.out.println(client.getAssets().get(acctNum - 1).getAssetInfo());
                 } catch (NumberFormatException | IndexOutOfBoundsException ex) {
                     System.out.println("Not a valid option");
                 }
@@ -127,6 +132,7 @@ public class BankUserInterface {
         }
     }
 
+    //Print out deposit and withdraw options
     private void accountOptions(Account a) {
         System.out.println("Account number: " + a.getAccountNumber());
         System.out.println("Account balance: " + a.getBalance());
@@ -145,6 +151,7 @@ public class BankUserInterface {
         }
     }
 
+    //UI to deposit money into account
     private void depositMoney(Account a) {
         System.out.println("Enter amount: ");
         double depositAmount = input.nextDouble();
@@ -156,6 +163,7 @@ public class BankUserInterface {
         System.out.println("New account balance: $" + a.getBalance());
     }
 
+    //UI to withdraw money from account
     private void withdrawMoney(Account a) {
         System.out.println("Enter amount: ");
         double withdrawAmount = input.nextDouble();
@@ -168,12 +176,14 @@ public class BankUserInterface {
         System.out.println("New account balance: $" + a.getBalance());
     }
 
+    //Print out account information
     private void seeAccountInfo(Account a) {
         System.out.println("Interest: " + a.getInterest());
         System.out.println("Transaction fee: " + a.getTransactionFee());
         System.out.println("Annual fee: " + a.getAnnualFee());
     }
 
+    //UI to create a new account under the current client
     private void newAccount() {
         while (true) {
             System.out.println("Enter s for savings account, c for chequing account, q to quit");
@@ -200,6 +210,7 @@ public class BankUserInterface {
         }
     }
 
+    //UI to add a new asset under the current client
     private void newAsset() {
         while (true) {
             System.out.println("Enter b for Bond");
@@ -220,6 +231,7 @@ public class BankUserInterface {
         }
     }
 
+    //UI to specify Bond information
     private void newBond() {
         try {
             System.out.println("Enter issuer: ");
@@ -245,6 +257,7 @@ public class BankUserInterface {
 
     }
 
+    //UI to specify GIC information
     private void newGIC() {
         try {
             System.out.println("Enter value: ");
@@ -269,6 +282,7 @@ public class BankUserInterface {
         }
     }
 
+    //UI to specify stock information
     private void newStock() {
         try {
             System.out.println("Enter ticker: ");
@@ -295,6 +309,7 @@ public class BankUserInterface {
         }
     }
 
+    //UI to change password
     private void changePassword() {
         while (true) {
             System.out.println("Enter current password (q to quit): ");

@@ -10,21 +10,24 @@ public abstract class Asset {
     protected double interest;
     protected int accountNumber;
 
-    public double getInterest() {
-        return interest;
-    }
-
-    public BigDecimal getValue() {
-        return value.setScale(2, RoundingMode.DOWN);
-    }
-
+    //MODIFIES: this
+    //EFFECTS: Increases the value of the current asset by the specified interest rate
     public void addInterest() {
         value = value.add(BigDecimal.valueOf(value.doubleValue() * interest / 100).setScale(2, RoundingMode.DOWN));
     }
 
+    //Getters:
+    public BigDecimal getValue() {
+        return value.setScale(2, RoundingMode.DOWN);
+    }
+
+    public double getInterest() {
+        return interest;
+    }
+
     public abstract String getAsset();
 
-    public abstract void getAssetInfo();
+    public abstract String getAssetInfo();
 
     public int getAccountNumber() {
         return accountNumber;

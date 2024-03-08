@@ -1,14 +1,12 @@
 package model.assets;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Random;
 
 public class Stock extends Asset {
-    private String ticker;
+    private final String ticker;
     private int shares;
-
-    private boolean votingStock;
+    private final boolean votingStock;
     Random rnd = new Random();
 
     public Stock(String ticker, int shares, double sharePrice, double expectedReturn, boolean votingStock) {
@@ -20,6 +18,7 @@ public class Stock extends Asset {
         this.accountNumber = 1000000 + rnd.nextInt(9000000);
     }
 
+    //Getters
     public String getTicker() {
         return ticker;
     }
@@ -33,20 +32,23 @@ public class Stock extends Asset {
     }
 
 
+    //Returns long-form stock information.
     @Override
-    public void getAssetInfo() {
-        System.out.println("Stock:" + ticker);
-        System.out.println("Value: " + value);
-        System.out.println("No. of Shares: " + shares);
-        System.out.println("Expected annual return: " + interest);
+    public String getAssetInfo() {
+        String securedString;
+        String stockString = "Stock: " + this.ticker + "\n";
+        String valueString = "Value: " + this.value + "$\n";
+        String sharesString = "No. of Shares: " + this.shares + "\n";
+        String yieldString = "Expected annual return: " + this.interest + "%\n";
         if (votingStock) {
-            System.out.println("Voting Stock");
+            securedString = "Voting stock \n";
         } else {
-            System.out.println("Preferred Stock");
+            securedString = "Preferred stock \n";
         }
-        System.out.println("q to exit");
+        return stockString + valueString + sharesString + yieldString + securedString + "q to quit";
     }
 
+    //Returns short-from stock information.
     @Override
     public String getAsset() {
         return "Stock - " + ticker + " - Asset No: " + accountNumber;

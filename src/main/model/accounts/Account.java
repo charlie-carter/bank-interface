@@ -16,7 +16,7 @@ public abstract class Account {
     Random rnd = new Random();
 
     Account(BigDecimal amount) {
-        this.balance = amount;
+        this.balance = amount.setScale(2, RoundingMode.DOWN);;
         balance.setScale(2, RoundingMode.DOWN);
         this.accountNumber = 100000 + rnd.nextInt(900000);
     }
@@ -28,7 +28,7 @@ public abstract class Account {
         if (amount.compareTo(BigDecimal.ZERO) < 0) {
             throw new InvalidAmountException();
         } else {
-            balance = balance.add(amount);
+            balance = balance.add(amount).setScale(2, RoundingMode.DOWN);
         }
     }
 
@@ -36,8 +36,10 @@ public abstract class Account {
 
     public abstract String getAccountInfo();
 
-    public double getBalance() {
-        return balance.doubleValue();
+
+    //Getters
+    public BigDecimal getBalance() {
+        return balance.setScale(2, RoundingMode.DOWN);
     }
 
     public double getInterest() {

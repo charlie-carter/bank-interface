@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -21,7 +22,7 @@ public class SavingsAccountTest {
     void testDeposit() {
         try {
             testAccount.deposit(new BigDecimal("150.00"));
-            assertEquals(2150.00, testAccount.getBalance());
+            assertEquals(BigDecimal.valueOf(2150.00).setScale(2, RoundingMode.DOWN), testAccount.getBalance());
         } catch (InvalidAmountException e) {
             fail("Exception thrown");
         }
@@ -41,7 +42,7 @@ public class SavingsAccountTest {
     void testWithdrawal() {
         try {
             testAccount.withdraw(new BigDecimal("500.00"));
-            assertEquals(1500.00, testAccount.getBalance());
+            assertEquals(BigDecimal.valueOf(1499.50).setScale(2, RoundingMode.DOWN), testAccount.getBalance());
         } catch (InvalidAmountException e) {
             fail("Exception thrown");
         }
@@ -62,5 +63,17 @@ public class SavingsAccountTest {
         } catch (InvalidAmountException e) {
             // All good
         }
+    }
+
+    @Test
+    void testAddInterest() {
+        assertEquals(BigDecimal.valueOf(2000.00).setScale(2, RoundingMode.DOWN), testAccount.getBalance());
+        testAccount.addInterest();
+        assertEquals(BigDecimal.valueOf(2050.00).setScale(2, RoundingMode.DOWN), testAccount.getBalance());
+    }
+
+    @Test
+    void testGetAccountInfo() {
+        assertEquals("Savings - $2000.00", testAccount.getAccountInfo());
     }
 }
