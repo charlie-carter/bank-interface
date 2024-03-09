@@ -46,6 +46,7 @@ public class LoadClientInterface {
         }
     }
 
+    //Templated from phase 2 example
     //MODIFIES: this
     //EFFECTS: loads client data
     private void loadClient() {
@@ -87,6 +88,7 @@ public class LoadClientInterface {
         }
     }
 
+    //Templated from phase 2 example
     // EFFECTS: saves the client to file
     private void saveClient() {
         try {

@@ -9,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StockTest {
     private Stock testStock;
+    private Stock testStock2;
 
     @BeforeEach
     void setup() {
         testStock = new Stock("BA",28, 203.23, -8.2, false);
+        testStock2 = new Stock("BA",28, 203.23, -8.2, true);
     }
 
 
@@ -45,11 +47,14 @@ public class StockTest {
         String valueString = "Value: 5690.44$\n";
         String sharesString = "No. of Shares: 28\n";
         String yieldString = "Expected annual return: -8.2%\n";
-        securedString = "Preferred stock \n";
+        securedString = "Preferred stock\n";
 
         String expected = stockString + valueString + sharesString + yieldString + securedString + "q to quit";
-
         assertEquals(expected, testStock.getAssetInfo());
+
+        securedString = "Voting stock\n";
+        expected = stockString + valueString + sharesString + yieldString + securedString + "q to quit";
+        assertEquals(expected, testStock2.getAssetInfo());
     }
 
 

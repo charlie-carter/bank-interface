@@ -44,9 +44,9 @@ public class Stock extends Asset {
         String sharesString = "No. of Shares: " + this.shares + "\n";
         String yieldString = "Expected annual return: " + this.interest + "%\n";
         if (votingStock) {
-            securedString = "Voting stock \n";
+            securedString = "Voting stock\n";
         } else {
-            securedString = "Preferred stock \n";
+            securedString = "Preferred stock\n";
         }
         return stockString + valueString + sharesString + yieldString + securedString + "q to quit";
     }
