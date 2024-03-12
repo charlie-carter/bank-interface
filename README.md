@@ -24,3 +24,8 @@ usually never gets to see.
 - I want to be able to view how much each account is worth at any given time
 - I want to be able to transfer money between accounts 
 - I want to be able to deposit and withdraw money from any account
+
+### Phase 2 user stories:
+
+- As a client of the bank, I want to be able to save the status of my finances when I leave the application (If I choose)
+- As a client of the bank, I want to be able to load a saved version of my accounts and assets at the bank (If I choose)

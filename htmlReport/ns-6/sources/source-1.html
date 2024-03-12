@@ -1,0 +1,430 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > BankUserInterface</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">ui</a>
+</div>
+
+<h1>Coverage Summary for Class: BankUserInterface (ui)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BankUserInterface</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/191)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package ui;
+&nbsp;
+&nbsp;import model.Client;
+&nbsp;import model.accounts.*;
+&nbsp;import model.assets.*;
+&nbsp;import model.exceptions.InvalidAmountException;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.InputMismatchException;
+&nbsp;import java.util.Scanner;
+&nbsp;
+&nbsp;public class BankUserInterface {
+&nbsp;
+&nbsp;    Scanner input;
+&nbsp;    private String password;
+&nbsp;    private Client client;
+&nbsp;
+<b class="nc">&nbsp;    public BankUserInterface(Client c) {</b>
+<b class="nc">&nbsp;        this.client = c;</b>
+<b class="nc">&nbsp;        this.password = client.getPassword();</b>
+<b class="nc">&nbsp;        runInterface();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    //Main bank interface
+&nbsp;    private void runInterface() {
+<b class="nc">&nbsp;        input = new Scanner(System.in);</b>
+<b class="nc">&nbsp;        input.useDelimiter(&quot;\n&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        boolean running = login();</b>
+&nbsp;
+<b class="nc">&nbsp;        while (running) {</b>
+&nbsp;            String menuPage;
+<b class="nc">&nbsp;            printMainMenu();</b>
+<b class="nc">&nbsp;            menuPage = input.next();</b>
+&nbsp;
+<b class="nc">&nbsp;            if (menuPage.equals(&quot;1&quot;)) {</b>
+<b class="nc">&nbsp;                accountMenu();</b>
+<b class="nc">&nbsp;            } else if (menuPage.equals(&quot;2&quot;)) {</b>
+<b class="nc">&nbsp;                assetMenu();</b>
+<b class="nc">&nbsp;            } else if (menuPage.equals(&quot;3&quot;)) { //trycatch, InputMismatchException</b>
+<b class="nc">&nbsp;                changePassword();</b>
+<b class="nc">&nbsp;            } else if (menuPage.equals(&quot;q&quot;)) {</b>
+<b class="nc">&nbsp;                running = false;</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                System.out.println(&quot;Invalid selection, please choose from the following:&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Login menu UI
+&nbsp;    private boolean login() {
+<b class="nc">&nbsp;        String selection = &quot;&quot;;</b>
+<b class="nc">&nbsp;        Scanner passwordInput = new Scanner(System.in);</b>
+<b class="nc">&nbsp;        passwordInput.useDelimiter(&quot;\n&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        while (!(selection.equals(password) || (selection.equals(&quot;q&quot;)))) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter password (q to quit): PASSWORD IS &#39;password123&#39;&quot;);</b>
+<b class="nc">&nbsp;            selection = passwordInput.next();</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return !selection.equals(&quot;q&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Main menu options
+&nbsp;    private void printMainMenu() {
+<b class="nc">&nbsp;        System.out.println(&quot;1 to view accounts&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;2 to view assets&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;3 to change password&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;q to quit&quot;);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    //Prints out accounts under current client, prompts user to enter an account to see more detail
+&nbsp;    private void accountMenu() {
+<b class="nc">&nbsp;        System.out.println(&quot;Accounts:&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Account a : client.getAccounts()) {</b>
+<b class="nc">&nbsp;            System.out.println((client.getAccounts().indexOf(a) + 1) + &quot; &lt;-- &quot; + a.getAccountInfo());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            System.out.println(&quot;Choose account (n to create a new account, q to exit): &quot;);</b>
+<b class="nc">&nbsp;            String accountOption = input.next();</b>
+<b class="nc">&nbsp;            if (accountOption.equals(&quot;n&quot;)) {</b>
+<b class="nc">&nbsp;                newAccount();</b>
+<b class="nc">&nbsp;                break;</b>
+<b class="nc">&nbsp;            } else if (accountOption.equals(&quot;q&quot;)) {</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            } else {
+&nbsp;                try {
+<b class="nc">&nbsp;                    int acctNum = Integer.parseInt(accountOption);</b>
+<b class="nc">&nbsp;                    accountOptions(client.getAccounts().get(acctNum - 1));</b>
+<b class="nc">&nbsp;                } catch (NumberFormatException | IndexOutOfBoundsException ex) {</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Not a valid option&quot;);</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Choose options to manage assets
+&nbsp;    private void assetMenu() {
+<b class="nc">&nbsp;        System.out.println(&quot;Assets:&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Asset a : client.getAssets()) {</b>
+<b class="nc">&nbsp;            System.out.println((client.getAssets().indexOf(a) + 1) + &quot; &lt;-- &quot; + a.getAsset());</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Choose asset (n to add a new asset, q to exit): &quot;);</b>
+&nbsp;
+&nbsp;
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            String assetOption = input.next();</b>
+<b class="nc">&nbsp;            if (assetOption.equals(&quot;n&quot;)) {</b>
+<b class="nc">&nbsp;                newAsset();</b>
+<b class="nc">&nbsp;                break;</b>
+<b class="nc">&nbsp;            } else if (assetOption.equals(&quot;q&quot;)) {</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            } else {
+&nbsp;                try {
+<b class="nc">&nbsp;                    int acctNum = Integer.parseInt(assetOption);</b>
+<b class="nc">&nbsp;                    System.out.println(client.getAssets().get(acctNum - 1).getAssetInfo());</b>
+<b class="nc">&nbsp;                } catch (NumberFormatException | IndexOutOfBoundsException ex) {</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Not a valid option&quot;);</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Print out deposit and withdraw options
+&nbsp;    private void accountOptions(Account a) {
+<b class="nc">&nbsp;        System.out.println(&quot;Account number: &quot; + a.getAccountNumber());</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Account balance: &quot; + a.getBalance());</b>
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            System.out.println(&quot;d to deposit, w to withdraw, i to see account info, q to exit&quot;);</b>
+<b class="nc">&nbsp;            String selection = input.next();</b>
+<b class="nc">&nbsp;            if (selection.equals(&quot;q&quot;)) {</b>
+<b class="nc">&nbsp;                break;</b>
+<b class="nc">&nbsp;            } else if (selection.equals(&quot;d&quot;)) {</b>
+<b class="nc">&nbsp;                depositMoney(a);</b>
+<b class="nc">&nbsp;            } else if (selection.equals(&quot;w&quot;)) {</b>
+<b class="nc">&nbsp;                withdrawMoney(a);</b>
+<b class="nc">&nbsp;            } else if (selection.equals(&quot;i&quot;)) {</b>
+<b class="nc">&nbsp;                seeAccountInfo(a);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //UI to deposit money into account
+&nbsp;    private void depositMoney(Account a) {
+<b class="nc">&nbsp;        System.out.println(&quot;Enter amount: &quot;);</b>
+<b class="nc">&nbsp;        double depositAmount = input.nextDouble();</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            a.deposit(BigDecimal.valueOf(depositAmount));</b>
+<b class="nc">&nbsp;        } catch (InvalidAmountException e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Invalid amount&quot;);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println(&quot;New account balance: $&quot; + a.getBalance());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //UI to withdraw money from account
+&nbsp;    private void withdrawMoney(Account a) {
+<b class="nc">&nbsp;        System.out.println(&quot;Enter amount: &quot;);</b>
+<b class="nc">&nbsp;        double withdrawAmount = input.nextDouble();</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            a.withdraw(BigDecimal.valueOf(withdrawAmount));</b>
+<b class="nc">&nbsp;        } catch (InvalidAmountException e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Invalid Amount&quot;);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        System.out.println(&quot;New account balance: $&quot; + a.getBalance());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Print out account information
+&nbsp;    private void seeAccountInfo(Account a) {
+<b class="nc">&nbsp;        System.out.println(&quot;Interest: &quot; + a.getInterest());</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Transaction fee: &quot; + a.getTransactionFee());</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Annual fee: &quot; + a.getAnnualFee());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //UI to create a new account under the current client
+&nbsp;    private void newAccount() {
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            System.out.println(&quot;Enter s for savings account, c for chequing account, q to quit&quot;);</b>
+<b class="nc">&nbsp;            String accountOption = input.next();</b>
+<b class="nc">&nbsp;            if (accountOption.equals(&quot;q&quot;)) {</b>
+<b class="nc">&nbsp;                break;</b>
+<b class="nc">&nbsp;            } else if (accountOption.equals(&quot;s&quot;) | accountOption.equals(&quot;c&quot;)) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter balance: &quot;);</b>
+&nbsp;
+&nbsp;                try {
+<b class="nc">&nbsp;                    double newBalance = input.nextDouble();</b>
+<b class="nc">&nbsp;                    if (accountOption.equals(&quot;s&quot;)) {</b>
+<b class="nc">&nbsp;                        client.addAccount(new SavingsAccount(newBalance));</b>
+&nbsp;
+&nbsp;                    } else {
+<b class="nc">&nbsp;                        client.addAccount(new ChequingAccount(newBalance));</b>
+&nbsp;
+&nbsp;                    }
+<b class="nc">&nbsp;                } catch (InputMismatchException e) {</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Invalid amount&quot;);</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //UI to add a new asset under the current client
+&nbsp;    private void newAsset() {
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            System.out.println(&quot;Enter b for Bond&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter g for GIC&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter s for Stock&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;q to quit&quot;);</b>
+<b class="nc">&nbsp;            String assetOption = input.next();</b>
+<b class="nc">&nbsp;            if (assetOption.equals(&quot;q&quot;)) {</b>
+<b class="nc">&nbsp;                break;</b>
+<b class="nc">&nbsp;            } else if (assetOption.equals(&quot;b&quot;)) {</b>
+<b class="nc">&nbsp;                newBond();</b>
+<b class="nc">&nbsp;            } else if (assetOption.equals(&quot;g&quot;)) {</b>
+<b class="nc">&nbsp;                newGIC();</b>
+<b class="nc">&nbsp;            } else if (assetOption.equals(&quot;s&quot;)) {</b>
+<b class="nc">&nbsp;                newStock();</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //UI to specify Bond information
+&nbsp;    private void newBond() {
+&nbsp;        try {
+<b class="nc">&nbsp;            System.out.println(&quot;Enter issuer: &quot;);</b>
+<b class="nc">&nbsp;            String issuer = input.next();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter value: &quot;);</b>
+<b class="nc">&nbsp;            double value = input.nextDouble();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter yield: &quot;);</b>
+<b class="nc">&nbsp;            double yld = input.nextDouble();</b>
+&nbsp;            while (true) {
+<b class="nc">&nbsp;                System.out.println(&quot;Secured (y/n): &quot;);</b>
+<b class="nc">&nbsp;                String sec = input.next();</b>
+<b class="nc">&nbsp;                if (sec.equals(&quot;y&quot;)) {</b>
+<b class="nc">&nbsp;                    client.addAsset(new Bond(value, 2040, issuer, yld, true));</b>
+<b class="nc">&nbsp;                    break;</b>
+<b class="nc">&nbsp;                } else if (sec.equals(&quot;n&quot;)) {</b>
+<b class="nc">&nbsp;                    client.addAsset(new Bond(value, 2040, issuer, yld, false));</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                }
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        } catch (InputMismatchException e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Bond Invalid&quot;);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    //UI to specify GIC information
+&nbsp;    private void newGIC() {
+&nbsp;        try {
+<b class="nc">&nbsp;            System.out.println(&quot;Enter value: &quot;);</b>
+<b class="nc">&nbsp;            double value = input.nextDouble();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter Term: &quot;);</b>
+<b class="nc">&nbsp;            int term = input.nextInt();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter rate: &quot;);</b>
+<b class="nc">&nbsp;            double rate = input.nextDouble();</b>
+&nbsp;            while (true) {
+<b class="nc">&nbsp;                System.out.println(&quot;Redeemable (y/n): &quot;);</b>
+<b class="nc">&nbsp;                String redeemable = input.next();</b>
+<b class="nc">&nbsp;                if (redeemable.equals(&quot;y&quot;)) {</b>
+<b class="nc">&nbsp;                    client.addAsset(new GIC(term, true, rate, value));</b>
+<b class="nc">&nbsp;                    break;</b>
+<b class="nc">&nbsp;                } else if (redeemable.equals(&quot;n&quot;)) {</b>
+<b class="nc">&nbsp;                    client.addAsset(new GIC(term, false, rate, value));</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                }
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        } catch (InputMismatchException e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;GIC Invalid&quot;);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //UI to specify stock information
+&nbsp;    private void newStock() {
+&nbsp;        try {
+<b class="nc">&nbsp;            System.out.println(&quot;Enter ticker: &quot;);</b>
+<b class="nc">&nbsp;            String ticker = input.next();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter value: &quot;);</b>
+<b class="nc">&nbsp;            double value = input.nextDouble();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter Number of Shares: &quot;);</b>
+<b class="nc">&nbsp;            int shares = input.nextInt();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Enter expected annual return: &quot;);</b>
+<b class="nc">&nbsp;            double expectedReturn = input.nextDouble();</b>
+&nbsp;            while (true) {
+<b class="nc">&nbsp;                System.out.println(&quot;Voting Stock? (y/n): &quot;);</b>
+<b class="nc">&nbsp;                String voting = input.next();</b>
+<b class="nc">&nbsp;                if (voting.equals(&quot;y&quot;)) {</b>
+<b class="nc">&nbsp;                    client.addAsset(new Stock(ticker, shares, value, expectedReturn, true));</b>
+<b class="nc">&nbsp;                    break;</b>
+<b class="nc">&nbsp;                } else if (voting.equals(&quot;n&quot;)) {</b>
+<b class="nc">&nbsp;                    client.addAsset(new Stock(ticker, shares, value, expectedReturn, false));</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                }
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        } catch (InputMismatchException e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Invalid Stock&quot;);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //UI to change password
+&nbsp;    private void changePassword() {
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            System.out.println(&quot;Enter current password (q to quit): &quot;);</b>
+<b class="nc">&nbsp;            String currentPassword = input.next();</b>
+<b class="nc">&nbsp;            if (currentPassword.equals(client.getPassword())) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter new password: &quot;);</b>
+<b class="nc">&nbsp;                String newPassword = input.next();</b>
+<b class="nc">&nbsp;                client.setPassword(newPassword);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Password changed successfully!&quot;);</b>
+<b class="nc">&nbsp;                break;</b>
+<b class="nc">&nbsp;            } else if (currentPassword.equals(&quot;q&quot;)) {</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                System.out.println(&quot;Password incorrect&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-03-11 21:29</div>
+</div>
+</body>
+</html>

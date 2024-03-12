@@ -1,5 +1,6 @@
 package model.assets;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -54,5 +55,23 @@ public class GICTest {
         expected = gicString + valueString + termString + rateString + securedString + "q to quit";
 
         assertEquals(expected, testGIC2.getAssetInfo());
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject testJson = testGIC.toJson();
+
+        double value = testJson.getDouble("value");
+        int term = testJson.getInt("term");
+        double interest = testJson.getDouble("rate");
+        boolean secured = testJson.getBoolean("redeemable");
+
+        GIC gicFromRead = new GIC(term, secured, interest, value);
+
+        assertEquals(testGIC.getValue(), gicFromRead.getValue());
+        assertEquals(testGIC.getTerm(), gicFromRead.getTerm());
+        assertEquals(testGIC.getInterest(), gicFromRead.getInterest());
+        assertEquals(testGIC.isRedeemable(), gicFromRead.isRedeemable());
+
     }
 }

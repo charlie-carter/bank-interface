@@ -1,5 +1,6 @@
 package model.assets;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -56,6 +57,26 @@ public class StockTest {
         expected = stockString + valueString + sharesString + yieldString + securedString + "q to quit";
         assertEquals(expected, testStock2.getAssetInfo());
     }
+
+    @Test
+    void testToJson() {
+        JSONObject testJson = testStock.toJson();
+        double value = testJson.getDouble("shareprice");
+        int shares = testJson.getInt("shares");
+        double interest = testJson.getDouble("return");
+        String ticker = testJson.getString("ticker");
+        boolean secured = testJson.getBoolean("secured");
+
+        Stock stockFromRead = new Stock(ticker, shares, value, interest, secured);
+
+        assertEquals(testStock.getValue(), stockFromRead.getValue());
+        assertEquals(testStock.getShares(), stockFromRead.getShares());
+        assertEquals(testStock.getInterest(), stockFromRead.getInterest());
+        assertEquals(testStock.getTicker(), stockFromRead.getTicker());
+        assertEquals(testStock.isVotingStock(), stockFromRead.isVotingStock());
+    }
+
+
 
 
 }

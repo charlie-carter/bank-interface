@@ -25,6 +25,7 @@ public class Client {
         this.assets = new ArrayList<>();
     }
 
+    //Getters and setters
     public void addAccount(Account account) {
         accounts.add(account);
     }
@@ -41,10 +42,6 @@ public class Client {
         return password;
     }
 
-    //public int getClientNumber() {
-//        return clientNumber;
-//    }
-
     public ArrayList<Account> getAccounts() {
         return accounts;
     }
@@ -57,6 +54,7 @@ public class Client {
         this.password = password;
     }
 
+    //EFFECTS: Convert client to json format
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
@@ -68,6 +66,7 @@ public class Client {
         return json;
     }
 
+    //EFFECTS: iterates through list of accounts to convert them to json format
     private JSONArray accountsToJson() {
         JSONArray jsonArray = new JSONArray();
         for (Account a : accounts) {
@@ -77,6 +76,7 @@ public class Client {
         return jsonArray;
     }
 
+    //EFFECTS: iterates through list of assets to convert them to json format
     private JSONArray assetsToJson() {
         JSONArray jsonArray = new JSONArray();
         for (Asset a : assets) {

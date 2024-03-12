@@ -1,5 +1,6 @@
 package model.assets;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
@@ -46,6 +47,25 @@ public class BondTest {
         expected = "Bond: \nValue: 500.75\nIssuer: Boeing\nYear of Maturity: 2040\nYield: 4.8%\nUnsecured asset\nq to quit";
         assertEquals(expected, testBond2.getAssetInfo());
 
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject testJson = testBond.toJson();
+
+        double value = testJson.getDouble("value");
+        int yom = testJson.getInt("yom");
+        double yield = testJson.getDouble("yield");
+        String issuer = testJson.getString("issuer");
+        boolean secured = testJson.getBoolean("secured");
+
+        Bond bondFromRead = new Bond(value, yom, issuer, yield, secured);
+
+        assertEquals(testBond.getValue(), bondFromRead.getValue());
+        assertEquals(testBond.getYearOfMaturity(), bondFromRead.getYearOfMaturity());
+        assertEquals(testBond.getInterest(), bondFromRead.getInterest());
+        assertEquals(testBond.getIssuer(), bondFromRead.getIssuer());
+        assertEquals(testBond.isSecured(), bondFromRead.isSecured());
     }
 
 

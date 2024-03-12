@@ -51,6 +51,7 @@ public class GIC extends Asset {
         return "GIC - Asset No: " + accountNumber;
     }
 
+    //EFFECTS: returns a JSONObject with the same parameters as this GIC
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

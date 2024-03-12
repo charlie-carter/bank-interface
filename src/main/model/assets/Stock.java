@@ -57,12 +57,13 @@ public class Stock extends Asset {
         return "Stock - " + ticker + " - Asset No: " + accountNumber;
     }
 
+    //EFFECTS: returns a JSONObject with the same parameters as this Stock
     @Override
     public JSONObject toJson() {
-        value = value.divide(BigDecimal.valueOf(shares), 2, RoundingMode.DOWN);
+        BigDecimal writeValue = value.divide(BigDecimal.valueOf(shares), 2, RoundingMode.DOWN);
         JSONObject json = new JSONObject();
         json.put("type", "Stock");
-        json.put("shareprice", value.doubleValue());
+        json.put("shareprice", writeValue.doubleValue());
         json.put("ticker", ticker);
         json.put("return", interest);
         json.put("shares", shares);

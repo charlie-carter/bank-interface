@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import java.io.*;
 
 // Represents a writer that writes JSON representation of workroom to file
+// Some methods taken from phase 2 example file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

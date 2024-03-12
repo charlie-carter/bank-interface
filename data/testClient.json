@@ -1,0 +1,48 @@
+{
+    "assets": [
+        {
+            "shares": 30,
+            "ticker": "BA",
+            "shareprice": 210.21,
+            "type": "Stock",
+            "secured": false,
+            "return": -20.7
+        },
+        {
+            "yom": 2050,
+            "yield": 12.5,
+            "type": "Bond",
+            "value": 5.0E7,
+            "secured": true,
+            "issuer": "Boeing"
+        },
+        {
+            "redeemable": true,
+            "rate": 3.5,
+            "term": 30,
+            "type": "GIC",
+            "value": 10000
+        },
+        {
+            "redeemable": false,
+            "rate": 5.8,
+            "term": 25,
+            "type": "GIC",
+            "value": 10000
+        }
+    ],
+    "pass": "password",
+    "name": "David Soloman",
+    "accounts": [
+        {
+            "balance": 4232.95,
+            "acctnum": 667903,
+            "type": "Savings"
+        },
+        {
+            "balance": 234.21,
+            "acctnum": 619682,
+            "type": "Chequing"
+        }
+    ]
+}

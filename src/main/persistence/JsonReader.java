@@ -17,6 +17,7 @@ import model.assets.*;
 import org.json.*;
 
 // Represents a reader that reads workroom from JSON data stored in file
+// Some methods taken from phase 2 example file
 public class JsonReader {
     private String source;
 

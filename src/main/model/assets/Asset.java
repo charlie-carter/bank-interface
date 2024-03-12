@@ -4,6 +4,7 @@ import persistence.Writable;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Objects;
 
 
 public abstract class Asset implements Writable {
@@ -33,5 +34,18 @@ public abstract class Asset implements Writable {
 
     public int getAccountNumber() {
         return accountNumber;
+    }
+
+    // Compares two assets
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Asset asset = (Asset) o;
+        return Double.compare(interest, asset.interest) == 0 && Objects.equals(value, asset.value);
     }
 }

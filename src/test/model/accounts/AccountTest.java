@@ -11,10 +11,5 @@ import static org.junit.jupiter.api.Assertions.*;
 abstract class AccountTest {
     protected Account testAccount;
 
-    @Test
-    void testConstructor() {
-        //assertEquals(BigDecimal.ZERO, testAccount.balance);
-
-    }
 
 }

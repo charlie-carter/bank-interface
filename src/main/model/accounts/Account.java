@@ -6,6 +6,7 @@ import persistence.Writable;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -62,5 +63,18 @@ public abstract class Account implements Writable {
 
     public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
+    }
+
+    // Compare two accounts by matching up account numbers
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Account account = (Account) o;
+        return accountNumber == account.accountNumber;
     }
 }

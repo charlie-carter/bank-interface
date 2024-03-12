@@ -60,6 +60,7 @@ public class Bond extends Asset {
         return "Bond - Asset No: " + accountNumber;
     }
 
+    //EFFECTS: returns a JSONObject with the same parameters as this Bond
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

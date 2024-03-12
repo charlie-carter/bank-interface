@@ -1,6 +1,7 @@
 package model.accounts;
 
 import model.exceptions.InvalidAmountException;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -75,5 +76,18 @@ public class SavingsAccountTest {
     @Test
     void testGetAccountInfo() {
         assertEquals("Savings - $2000.00", testAccount.getAccountInfo());
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject testJson = testAccount.toJson();
+        double balance = testJson.getDouble("balance");
+        int accountNum = testJson.getInt("acctnum");
+
+        SavingsAccount accountFromJson = new SavingsAccount(balance);
+        accountFromJson.setAccountNumber(accountNum);
+
+        assertEquals(testAccount.getBalance(), accountFromJson.getBalance());
+        assertEquals(testAccount.getAccountNumber(), accountFromJson.getAccountNumber());
     }
 }
