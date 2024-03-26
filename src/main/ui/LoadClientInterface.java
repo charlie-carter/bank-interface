@@ -1,5 +1,6 @@
 package ui;
 
+import gui.ClientGUI;
 import model.Client;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -53,7 +54,8 @@ public class LoadClientInterface {
         try {
             user = jsonReader.read();
             System.out.println("Loaded " + user.getName() + " from " + JSON_STORE);
-            new BankUserInterface(user);
+            //new BankUserInterface(user);
+            new ClientGUI(user);
             exitPage();
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);

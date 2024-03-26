@@ -4,18 +4,23 @@
     "name": "John Lastname",
     "accounts": [
         {
-            "balance": 1499.5,
-            "acctnum": 536746,
+            "balance": 1234,
+            "acctnum": 747872,
             "type": "Savings"
         },
         {
-            "balance": 1234,
-            "acctnum": 754378,
+            "balance": 3000,
+            "acctnum": 327125,
             "type": "Chequing"
         },
         {
-            "balance": 50,
-            "acctnum": 135492,
+            "balance": 500,
+            "acctnum": 850674,
+            "type": "Chequing"
+        },
+        {
+            "balance": 210,
+            "acctnum": 602659,
             "type": "Savings"
         }
     ]

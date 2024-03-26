@@ -64,6 +64,7 @@ public abstract class Account implements Writable {
         this.accountNumber = accountNumber;
     }
 
+
     // Compare two accounts by matching up account numbers
     @Override
     public boolean equals(Object o) {
