@@ -1,16 +1,22 @@
 {
-    "assets": [{
-        "redeemable": false,
-        "rate": 3.6,
-        "term": 25,
-        "type": "GIC",
-        "value": 30000
-    }],
-    "pass": "hello",
+    "assets": [],
+    "pass": "password123",
     "name": "John Lastname",
-    "accounts": [{
-        "balance": 5000,
-        "acctnum": 490561,
-        "type": "Chequing"
-    }]
+    "accounts": [
+        {
+            "balance": 1499.5,
+            "acctnum": 536746,
+            "type": "Savings"
+        },
+        {
+            "balance": 1234,
+            "acctnum": 754378,
+            "type": "Chequing"
+        },
+        {
+            "balance": 50,
+            "acctnum": 135492,
+            "type": "Savings"
+        }
+    ]
 }

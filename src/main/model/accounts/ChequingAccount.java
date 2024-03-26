@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 
+// Extension of Account Abstract class. Specifies behaviour for a chequing account (No transaction fee, no interest)
+
 public class ChequingAccount extends Account {
     public ChequingAccount(double amount) {
         super(BigDecimal.valueOf(amount));

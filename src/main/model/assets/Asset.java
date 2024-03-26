@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
 
+// Abstract class asset. Outlines a class to be extended by various types of assets that can be stored at the bank.
+// Specifies fields for asset value, annual interest (can be used to store expected return or
+// yield depending on asset type), and asset number (considered an account number).
 
 public abstract class Asset implements Writable {
 

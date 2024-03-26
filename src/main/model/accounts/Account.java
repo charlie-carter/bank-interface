@@ -1,14 +1,13 @@
 package model.accounts;
 
 import model.exceptions.InvalidAmountException;
-import org.json.JSONObject;
 import persistence.Writable;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Objects;
 import java.util.Random;
 
+// Abstract class for accounts. Specifies account Balance, interest, acct. number, and various account related fees.
 
 public abstract class Account implements Writable {
     protected BigDecimal balance;

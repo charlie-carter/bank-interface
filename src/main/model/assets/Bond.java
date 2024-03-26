@@ -5,6 +5,9 @@ import org.json.JSONObject;
 import java.math.BigDecimal;
 import java.util.Random;
 
+// Used to register individual bonds at the bank. Can be used for corporate, institutional, and government debt.
+// Adds field for the bond's year of maturity, bond's issuer, and whether the bond is secured (1st lien) or not.
+
 public class Bond extends Asset {
     private final int yearOfMaturity;
     private final String issuer;

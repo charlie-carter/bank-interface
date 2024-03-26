@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Random;
 
+// Used to hold stock(s) at the bank. One instance per different stock. Extension of Asset Abstract class.
+// Adds fields for the stock's ticker, num of shares owned, and whether the stock held is voting stock or not.
+
 public class Stock extends Asset {
     private final String ticker;
     private int shares;

@@ -6,6 +6,9 @@ import org.json.JSONObject;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+// Extension of Account Abstract class. Specifies behaviour for a savings account:
+// (Small transation fee, but has annual compound interest)
+
 public class SavingsAccount extends Account {
 
     public SavingsAccount(double amount) {

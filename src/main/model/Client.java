@@ -8,6 +8,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
+// Client class, loaded by BankUserInterface, holds information on Client name, password, accounts and assets.
+
 public class Client {
     ArrayList<Account> accounts;
     ArrayList<Asset> assets;
