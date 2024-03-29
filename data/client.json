@@ -1,5 +1,36 @@
 {
-    "assets": [],
+    "assets": [
+        {
+            "yom": 2040,
+            "yield": 18.4,
+            "type": "Bond",
+            "value": 50000,
+            "secured": true,
+            "issuer": "Boeing"
+        },
+        {
+            "redeemable": false,
+            "rate": 5.5,
+            "term": 30,
+            "type": "GIC",
+            "value": 30000
+        },
+        {
+            "shares": 380,
+            "ticker": "BA",
+            "shareprice": 45.7,
+            "type": "Stock",
+            "secured": false,
+            "return": -12.2
+        },
+        {
+            "redeemable": false,
+            "rate": 3.4,
+            "term": 30,
+            "type": "GIC",
+            "value": 500
+        }
+    ],
     "pass": "password123",
     "name": "John Lastname",
     "accounts": [
@@ -21,6 +52,11 @@
         {
             "balance": 210,
             "acctnum": 602659,
+            "type": "Savings"
+        },
+        {
+            "balance": 5000,
+            "acctnum": 841757,
             "type": "Savings"
         }
     ]
