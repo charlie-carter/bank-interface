@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// This class generates the GUI to create a new asset under the user. It adds the new account to the clients
+// list of assets.
 public class CreateAsset extends JFrame {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 100;
@@ -25,6 +27,8 @@ public class CreateAsset extends JFrame {
         setVisible(true);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Generates three buttons to direct the user to the correct page for the asset they want to add
     private void initializeGraphics() {
 
         assetOptions.setLayout(new FlowLayout(FlowLayout.CENTER));

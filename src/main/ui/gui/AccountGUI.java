@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 
+// This page shows the client a detailed view of any accounts,
+// as well as options to withdraw or deposit from theis account.
 public class AccountGUI extends JFrame {
 
     private Account account;
@@ -30,6 +32,8 @@ public class AccountGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets sizing information for the window, calls other methods to generate acccount data
     private void openAccountPage() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
@@ -42,6 +46,8 @@ public class AccountGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: generates a text field and buttons to deposit and withdraw from this account
     private void printAccountOptions() {
         JPanel accountOptions = new JPanel();
         accountOptions.setLayout(new GridLayout(0, 1, 15, 15));
@@ -56,6 +62,8 @@ public class AccountGUI extends JFrame {
         add(accountOptions);
     }
 
+    //MODIFIES: this.account
+    //EFFECTS: Withdraws from the current account if the withdraw button is pressed
     private JButton getWithdrawButton() {
         JButton createButton = new JButton("Withdraw");
         createButton.addActionListener(new ActionListener() {
@@ -74,6 +82,8 @@ public class AccountGUI extends JFrame {
         return createButton;
     }
 
+    //MODIFIES: this.account
+    //EFFECTS: Deposits into the current account if the deposit button is pressed
     private JButton getDepositButton() {
         JButton createButton = new JButton("Deposit");
         createButton.addActionListener(new ActionListener() {
@@ -93,6 +103,8 @@ public class AccountGUI extends JFrame {
     }
 
 
+    //MODIFIES: this
+    //EFFECTS: generates a detailed view of the current account for the user
     private void printAccountInfo() {
         JPanel accountInfo = new JPanel();
         accountInfo.setLayout(new GridLayout(0, 1, 15, 15));
@@ -118,6 +130,8 @@ public class AccountGUI extends JFrame {
         this.add(accountInfo, BorderLayout.WEST);
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes this panel from the screen
     private void removePanel() {
         this.setVisible(false);
         this.dispose();

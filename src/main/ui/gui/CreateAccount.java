@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// GUI to enter information to create a new client
 public class CreateAccount extends JFrame {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 80;
@@ -29,6 +30,8 @@ public class CreateAccount extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: Generates fields for the user to input a username and password
     private void initializeGraphics() {
         accountPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         accountPanel.setLayout(new GridLayout(1, 4));
@@ -58,6 +61,8 @@ public class CreateAccount extends JFrame {
         add(accountPanel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes this panel from the screen
     private void removePanel() {
         this.setVisible(false);
         this.dispose();

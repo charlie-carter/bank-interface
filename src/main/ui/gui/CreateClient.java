@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// This class generates a page for a client to sign up at the bank.
 public class CreateClient extends JFrame {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 100;
@@ -24,6 +25,8 @@ public class CreateClient extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    //MODIFIES: this
+    //EFFECTS: generates text boxes and fields for user to enter information.
     private void initializeGraphics() {
         JPanel loginPanel = new JPanel();
         loginPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -46,6 +49,7 @@ public class CreateClient extends JFrame {
         add(loginPanel);
     }
 
+    //EFFECTS: Listens for user to press create account button, opens a new blank ClientGUI
     private class Login implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -57,6 +61,8 @@ public class CreateClient extends JFrame {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes this panel from the screen
     private void removePanel() {
         this.setVisible(false);
         this.dispose();

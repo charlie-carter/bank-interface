@@ -29,3 +29,13 @@ usually never gets to see.
 
 - As a client of the bank, I want to be able to save the status of my finances when I leave the application (If I choose)
 - As a client of the bank, I want to be able to load a saved version of my accounts and assets at the bank (If I choose)
+
+### Phase 3 user stories:
+
+- As a client of the bank, I want to be able to see a list of all my current accounts and assets
+- As a client of the bank, I want to be able to view details of any accounts or asset, and withdraw/deposit money from any account through the GUI
+- As a client of the bank, I want to be able to change my password through a GUI
+
+
+## For grader:
+### Username is "John Lastname", password is "password123"

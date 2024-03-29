@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// GUI for the user to input information to create a new Bond
 public class CreateBond extends JFrame {
     public static final int WIDTH = 300;
     public static final int HEIGHT = 300;
@@ -32,6 +33,8 @@ public class CreateBond extends JFrame {
         setVisible(true);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Generates fields to input bond information
     private void makeBond() {
         JPanel newBond = new JPanel();
         newBond.setLayout(new GridLayout(0,2));
@@ -54,6 +57,7 @@ public class CreateBond extends JFrame {
 
     }
 
+    //EFFECTS: generates a button and behaviour to create a new bond
     private JButton getButton() {
         JButton createBond = new JButton("Submit");
         createBond.addActionListener(new ActionListener() {
@@ -72,6 +76,8 @@ public class CreateBond extends JFrame {
         return createBond;
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes this panel from the screen
     private void removePanel() {
         this.setVisible(false);
         this.dispose();

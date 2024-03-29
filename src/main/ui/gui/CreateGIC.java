@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// GUI for the user to input information to create a new GIC
 public class CreateGIC extends JFrame {
     public static final int WIDTH = 300;
     public static final int HEIGHT = 300;
@@ -30,6 +31,8 @@ public class CreateGIC extends JFrame {
         setVisible(true);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Generates fields to input GIC information
     private void makeGIC() {
         JPanel newGIC = new JPanel();
         newGIC.setLayout(new GridLayout(0,2));
@@ -50,6 +53,7 @@ public class CreateGIC extends JFrame {
 
     }
 
+    //EFFECTS: generates a button and behaviour to create a new GIC
     private JButton getButton() {
         JButton createGIC = new JButton("Submit");
         createGIC.addActionListener(new ActionListener() {
@@ -67,6 +71,8 @@ public class CreateGIC extends JFrame {
         return createGIC;
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes this panel from the screen
     private void removePanel() {
         this.setVisible(false);
         this.dispose();

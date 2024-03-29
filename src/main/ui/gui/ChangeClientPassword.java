@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// This class generates a gui for the user to change their password on file
 public class ChangeClientPassword extends JFrame {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 80;
@@ -22,6 +23,8 @@ public class ChangeClientPassword extends JFrame {
         setVisible(true);
     }
 
+    //MODIFIES: this, client
+    //EFFECTS: Generates a text box and a button for the user to update their password
     private void initializeGraphics() {
         JPanel passwordChange = new JPanel();
         passwordChange.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -45,6 +48,8 @@ public class ChangeClientPassword extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes this panel from the screen
     private void removePanel() {
         this.setVisible(false);
         this.dispose();

@@ -124,6 +124,15 @@ class ClientTest {
             assertEquals(a, testClient.getAssets().get(index));
         }
     }
+
+    @Test
+    void testEquals() {
+        assertTrue(testAccount1.equals(testAccount1));
+        assertFalse(testAccount1.equals(testAccount2));
+        assertFalse(testAccount1.equals(testAccount3));
+        assertFalse(testAccount1.equals(testGIC));
+        assertFalse(testStock.equals(testGIC));
+    }
 //
 //    @Test
 //    void testAssetsToJson() {

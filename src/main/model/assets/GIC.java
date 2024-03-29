@@ -5,6 +5,8 @@ import org.json.JSONObject;
 import java.math.BigDecimal;
 import java.util.Random;
 
+// Creates a new GIC class, containing information on the GIC's value, rate, term,
+// and whether the gic is redeemable or not
 public class GIC extends Asset {
     private final int term;
     private final boolean redeemable;

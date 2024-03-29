@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// GUI for the user to input information to create a new Stock
 public class CreateStock extends JFrame {
 
     public static final int WIDTH = 400;
@@ -33,6 +34,8 @@ public class CreateStock extends JFrame {
         setVisible(true);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Generates fields to input Stock information
     private void makeStock() {
         JPanel newStock = new JPanel();
         newStock.setLayout(new GridLayout(0,2));
@@ -55,6 +58,7 @@ public class CreateStock extends JFrame {
 
     }
 
+    //EFFECTS: generates a button and behaviour to create a new stock
     private JButton getButton() {
         JButton createStock = new JButton("Submit");
         createStock.addActionListener(new ActionListener() {
@@ -75,6 +79,8 @@ public class CreateStock extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes this panel from the screen
     private void removePanel() {
         this.setVisible(false);
         this.dispose();

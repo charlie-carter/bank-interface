@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+// This class presents a detailed view of any asset, based on its type
 public class AssetGUI extends JFrame {
 
     private Asset asset;
@@ -36,6 +37,8 @@ public class AssetGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets window size and characteristics
     private void openAccountPage() {
         setLayout(new BorderLayout(15, 15));
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
@@ -46,6 +49,8 @@ public class AssetGUI extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: generates asset info based on class type
     private void printAssetInfo() {
         JPanel assetInfo = new JPanel();
         assetInfo.setLayout(new GridLayout(0, 1, 15, 2));
@@ -66,6 +71,7 @@ public class AssetGUI extends JFrame {
         this.add(assetInfo);
     }
 
+    //EFFECTS: returns detailed info on a Bond
     private JPanel printBondInfo(Bond b) {
 
         JLabel titleLabel = new JLabel("Bond - Asset #" + b.getAccountNumber());
@@ -95,6 +101,7 @@ public class AssetGUI extends JFrame {
 
     }
 
+    //EFFECTS: returns detailed info on a Stock
     private JPanel printStockInfo(Stock s) {
         JLabel titleLabel = new JLabel("Stock - " + s.getTicker() + " - Asset #" + s.getAccountNumber());
         JLabel stockValue = new JLabel("Value: " + s.getValue());
@@ -121,6 +128,7 @@ public class AssetGUI extends JFrame {
 
     }
 
+    //EFFECTS: returns detailed info on a GIC
     private JPanel printGicInfo(GIC g) {
         JLabel titleLabel = new JLabel("Guaranteed Investment Certificate - Asset #" + g.getAccountNumber());
         JLabel gicValue = new JLabel("Value: $" + g.getValue());

@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+// console UI to load a saved client, or create a new one
 public class LoadClientInterface {
     Scanner input;
     private static final String JSON_STORE = "./data/client.json";

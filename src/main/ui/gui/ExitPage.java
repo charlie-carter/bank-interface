@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
+// This is the final page the client sees as the exit the application,
+// it presents them the option of saving or discarding their data.
 public class ExitPage extends JFrame {
     public static final int WIDTH = 200;
     public static final int HEIGHT = 200;
@@ -27,6 +29,8 @@ public class ExitPage extends JFrame {
         setVisible(true);
     }
 
+    //MODIFIES: this
+    //EFFECTS: generates options for the user to either save or discard their data
     private void initializeGraphics() {
         JPanel exitPanel = new JPanel();
         exitPanel.setBorder(new EmptyBorder(5,5,5,5));
@@ -47,6 +51,8 @@ public class ExitPage extends JFrame {
         add(exitPanel);
     }
 
+    //MODIFIES: this, data files
+    //EFFECTS: saves the userdata to file, closes application
     private class SaveData implements ActionListener {
 
         @Override
@@ -62,6 +68,8 @@ public class ExitPage extends JFrame {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes this panel from the screen
     private void removePanel() {
         this.setVisible(false);
         this.dispose();

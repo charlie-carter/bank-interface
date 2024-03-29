@@ -1,15 +1,20 @@
 package ui;
 
 import model.Client;
-import model.accounts.*;
-import model.assets.*;
+import model.accounts.Account;
+import model.accounts.ChequingAccount;
+import model.accounts.SavingsAccount;
+import model.assets.Asset;
+import model.assets.Bond;
+import model.assets.GIC;
+import model.assets.Stock;
 import model.exceptions.InvalidAmountException;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+// Console UI for the client to manage their assets and accounts
 public class BankUserInterface {
 
     Scanner input;

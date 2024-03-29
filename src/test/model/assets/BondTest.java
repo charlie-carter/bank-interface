@@ -11,11 +11,16 @@ public class BondTest {
 
     private Bond testBond;
     private Bond testBond2;
+    private Bond testBond3;
+    private Stock testStock;
 
     @BeforeEach
     void setup() {
         testBond = new Bond(500.75, 2040, "Boeing", 4.8, true);
         testBond2 = new Bond(500.75, 2040, "Boeing", 4.8, false);
+        testBond3 = new Bond(500.60, 2040, "Boeing", 4.8, false);
+        testStock = new Stock("BA", 2, 200, 6, false);
+
 
     }
 
@@ -66,6 +71,13 @@ public class BondTest {
         assertEquals(testBond.getInterest(), bondFromRead.getInterest());
         assertEquals(testBond.getIssuer(), bondFromRead.getIssuer());
         assertEquals(testBond.isSecured(), bondFromRead.isSecured());
+    }
+
+    @Test
+    void testEquals() {
+        assertTrue(testBond.equals(testBond));
+        assertFalse(testBond.equals(testBond3));
+        assertFalse(testBond.equals(testStock));
     }
 
 

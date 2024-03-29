@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+// This is the login page of the banking application, it lets the user either enter their name and password,
+// or create a new account.
 public class LoginGUI extends JFrame {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 100;
@@ -33,6 +35,8 @@ public class LoginGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Loads any previous client data that was saved
     private void loadData() {
         try {
             client = jsonReader.read();
@@ -41,6 +45,8 @@ public class LoginGUI extends JFrame {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: Generates username and passwords field, as well as login and new user buttons
     private void initializeGraphics() {
         JPanel loginPanel = new JPanel();
         loginPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -65,6 +71,7 @@ public class LoginGUI extends JFrame {
         add(loginPanel);
     }
 
+    //EFFECTS: listener for login button, if passwords is correct opens new ClientGUI page
     private class Login implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -78,6 +85,7 @@ public class LoginGUI extends JFrame {
         }
     }
 
+    //EFFECTS: Listener to create a user, opens a page for user to enter their information to open a new client account.
     private class NewUser implements ActionListener {
 
         @Override
@@ -87,6 +95,8 @@ public class LoginGUI extends JFrame {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes this panel from the screen
     private void removePanel() {
         this.setVisible(false);
         this.dispose();
