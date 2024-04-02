@@ -1,6 +1,8 @@
 package persistence;
 
 import model.Client;
+import model.Event;
+import model.EventLog;
 import org.json.JSONObject;
 import java.io.*;
 
@@ -28,6 +30,7 @@ public class JsonWriter {
     public void write(Client c) {
         JSONObject json = c.toJson();
         saveToFile(json.toString(TAB));
+        EventLog.getInstance().logEvent(new Event("Data Saved to File"));
     }
 
     // MODIFIES: this

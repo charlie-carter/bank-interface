@@ -42,6 +42,7 @@ public class ExitPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 removePanel();
+                client.printLog();
                 System.exit(0);
             }
         });
@@ -65,6 +66,8 @@ public class ExitPage extends JFrame {
                 System.out.println("Unable to write to file: " + JSON_STORE);
             }
             removePanel();
+            client.printLog();
+            System.exit(0);
         }
     }
 

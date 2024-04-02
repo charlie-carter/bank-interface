@@ -1,5 +1,7 @@
 package model.accounts;
 
+import model.Event;
+import model.EventLog;
 import model.exceptions.InvalidAmountException;
 import persistence.Writable;
 
@@ -31,6 +33,8 @@ public abstract class Account implements Writable {
             throw new InvalidAmountException();
         } else {
             balance = balance.add(amount).setScale(2, RoundingMode.DOWN);
+            EventLog.getInstance().logEvent(new Event("$" + amount.toPlainString()
+                    + " deposited into account #" + accountNumber));
         }
     }
 

@@ -1,5 +1,7 @@
 package model.accounts;
 
+import model.Event;
+import model.EventLog;
 import model.exceptions.InvalidAmountException;
 import org.json.JSONObject;
 
@@ -26,7 +28,9 @@ public class ChequingAccount extends Account {
         if (amount.compareTo(balance) == 1) {
             throw new InvalidAmountException();
         } else {
-            super.balance = super.balance.subtract(amount).setScale(2, RoundingMode.DOWN);;
+            super.balance = super.balance.subtract(amount).setScale(2, RoundingMode.DOWN);
+            EventLog.getInstance().logEvent(new Event("$" + amount.toPlainString()
+                    + " withdrawn from account #" + accountNumber));
         }
     }
 

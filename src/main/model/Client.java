@@ -25,15 +25,19 @@ public class Client {
         this.password = password;
         this.accounts = new ArrayList<>();
         this.assets = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("New Client Created"));
     }
 
     //Getters and setters
     public void addAccount(Account account) {
         accounts.add(account);
+        EventLog.getInstance().logEvent(new Event("Added Account #"
+                + account.getAccountNumber() + " - " + account.getAccountInfo()));
     }
 
     public void addAsset(Asset asset) {
         assets.add(asset);
+        EventLog.getInstance().logEvent(new Event("Added " + asset.getAsset()));
     }
 
     public String getName() {
@@ -54,6 +58,7 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+        EventLog.getInstance().logEvent(new Event("Password Changed"));
     }
 
     //EFFECTS: Convert client to json format
@@ -86,5 +91,11 @@ public class Client {
         }
 
         return jsonArray;
+    }
+
+    public void printLog() {
+        for (Event e : EventLog.getInstance()) {
+            System.out.println(e.toString());
+        }
     }
 }
