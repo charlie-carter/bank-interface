@@ -13,23 +13,16 @@ import java.math.BigDecimal;
 // This page shows the client a detailed view of any accounts,
 // as well as options to withdraw or deposit from theis account.
 public class AccountGUI extends JFrame {
-
     private Account account;
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 300;
-    private ClientGUI superPage;
-    private String pageTitle;
     private JTextField amount = new JTextField();
-
     private FontBook fb = new FontBook();
 
-    public AccountGUI(Account a, ClientGUI c) {
+    public AccountGUI(Account a) {
         super("Account: #" + a.getAccountNumber());
         this.account = a;
         openAccountPage();
-        superPage = c;
-
-
     }
 
     //MODIFIES: this
@@ -37,10 +30,7 @@ public class AccountGUI extends JFrame {
     private void openAccountPage() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setLocationRelativeTo(superPage);
-
         setVisible(true);
-
         printAccountInfo();
         printAccountOptions();
 

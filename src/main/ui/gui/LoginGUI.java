@@ -12,14 +12,13 @@ import java.io.IOException;
 
 // This is the login page of the banking application, it lets the user either enter their name and password,
 // or create a new account.
-public class LoginGUI extends JFrame {
-    public static final int WIDTH = 500;
-    public static final int HEIGHT = 100;
+public class LoginGUI extends ExitingJFrame {
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 125;
     private static final String JSON_STORE = "./data/client.json";
     private FontBook fb = new FontBook();
     private JsonReader jsonReader;
     private Client client;
-
     private JTextField username = new JTextField();
     private JPasswordField password = new JPasswordField();
 
@@ -29,10 +28,10 @@ public class LoginGUI extends JFrame {
         loadData();
         initializeGraphics();
 
+        setLocationRelativeTo(null);
         setVisible(true);
-
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     //MODIFIES: this
@@ -71,6 +70,7 @@ public class LoginGUI extends JFrame {
         add(loginPanel);
     }
 
+
     //EFFECTS: listener for login button, if passwords is correct opens new ClientGUI page
     private class Login implements ActionListener {
         @Override
@@ -101,4 +101,5 @@ public class LoginGUI extends JFrame {
         this.setVisible(false);
         this.dispose();
     }
+
 }

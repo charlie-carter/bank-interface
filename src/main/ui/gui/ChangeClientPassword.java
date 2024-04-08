@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 public class ChangeClientPassword extends JFrame {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 80;
-    private FontBook fb = new FontBook();
     private Client client;
 
     public ChangeClientPassword(Client client) {

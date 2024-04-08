@@ -35,12 +35,12 @@ public class JsonReaderWriterTest {
         testGIC1 = new GIC(30, true, 3.5, 10000);
         testGIC2 = new GIC(25, false, 5.8, 10000);
 
-        testClient.addAccount(savAccount);
-        testClient.addAccount(chqAccount);
-        testClient.addAsset(testStock);
-        testClient.addAsset(testBond);
-        testClient.addAsset(testGIC1);
-        testClient.addAsset(testGIC2);
+        testClient.addAccount(savAccount, false);
+        testClient.addAccount(chqAccount, false);
+        testClient.addAsset(testStock, false);
+        testClient.addAsset(testBond, false);
+        testClient.addAsset(testGIC1, false);
+        testClient.addAsset(testGIC2, false);
 
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);

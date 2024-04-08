@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 public class CreateAsset extends JFrame {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 100;
-    private FontBook fb = new FontBook();
     private Client client;
     private JPanel assetOptions = new JPanel();
     private JButton newBond = new JButton("Add Bond");

@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 public class CreateBond extends JFrame {
     public static final int WIDTH = 300;
     public static final int HEIGHT = 300;
-    private FontBook fb = new FontBook();
     private Client client;
     private JLabel issuer = new JLabel("Bond Issuer");
     private JLabel value = new JLabel("Value ($)");
@@ -69,7 +68,7 @@ public class CreateBond extends JFrame {
                 String issuerString = issuerField.getText();
 
                 Bond tempBond = new Bond(valueDouble, yomInt, issuerString, rateDouble, secured.isSelected());
-                client.addAsset(tempBond);
+                client.addAsset(tempBond, true);
                 removePanel();
             }
         });

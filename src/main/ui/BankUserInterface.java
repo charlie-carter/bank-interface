@@ -196,10 +196,10 @@ public class BankUserInterface {
                 try {
                     double newBalance = input.nextDouble();
                     if (accountOption.equals("s")) {
-                        client.addAccount(new SavingsAccount(newBalance));
+                        client.addAccount(new SavingsAccount(newBalance), true);
 
                     } else {
-                        client.addAccount(new ChequingAccount(newBalance));
+                        client.addAccount(new ChequingAccount(newBalance), true);
 
                     }
                 } catch (InputMismatchException e) {
@@ -244,10 +244,10 @@ public class BankUserInterface {
                 System.out.println("Secured (y/n): ");
                 String sec = input.next();
                 if (sec.equals("y")) {
-                    client.addAsset(new Bond(value, 2040, issuer, yld, true));
+                    client.addAsset(new Bond(value, 2040, issuer, yld, true), true);
                     break;
                 } else if (sec.equals("n")) {
-                    client.addAsset(new Bond(value, 2040, issuer, yld, false));
+                    client.addAsset(new Bond(value, 2040, issuer, yld, false), true);
                     break;
                 }
             }
@@ -270,10 +270,10 @@ public class BankUserInterface {
                 System.out.println("Redeemable (y/n): ");
                 String redeemable = input.next();
                 if (redeemable.equals("y")) {
-                    client.addAsset(new GIC(term, true, rate, value));
+                    client.addAsset(new GIC(term, true, rate, value), true);
                     break;
                 } else if (redeemable.equals("n")) {
-                    client.addAsset(new GIC(term, false, rate, value));
+                    client.addAsset(new GIC(term, false, rate, value), true);
                     break;
                 }
             }
@@ -297,10 +297,10 @@ public class BankUserInterface {
                 System.out.println("Voting Stock? (y/n): ");
                 String voting = input.next();
                 if (voting.equals("y")) {
-                    client.addAsset(new Stock(ticker, shares, value, expectedReturn, true));
+                    client.addAsset(new Stock(ticker, shares, value, expectedReturn, true), true);
                     break;
                 } else if (voting.equals("n")) {
-                    client.addAsset(new Stock(ticker, shares, value, expectedReturn, false));
+                    client.addAsset(new Stock(ticker, shares, value, expectedReturn, false), true);
                     break;
                 }
             }

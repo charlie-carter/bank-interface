@@ -1,6 +1,7 @@
 package ui.gui;
 
 import model.Client;
+import model.LogPrinter;
 import persistence.JsonWriter;
 
 import javax.swing.*;
@@ -12,13 +13,14 @@ import java.io.FileNotFoundException;
 
 // This is the final page the client sees as the exit the application,
 // it presents them the option of saving or discarding their data.
-public class ExitPage extends JFrame {
+public class ExitPage extends ExitingJFrame {
     public static final int WIDTH = 200;
     public static final int HEIGHT = 200;
     private JsonWriter jsonWriter;
     private static final String JSON_STORE = "./data/client.json";
 
     private Client client;
+    private LogPrinter lp;
 
     public ExitPage(Client client) {
         super("Bank of UBC");
@@ -27,6 +29,7 @@ public class ExitPage extends JFrame {
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         initializeGraphics();
         setVisible(true);
+        lp = new LogPrinter();
     }
 
     //MODIFIES: this
@@ -42,7 +45,7 @@ public class ExitPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 removePanel();
-                client.printLog();
+                lp.printLogSafe();
                 System.exit(0);
             }
         });
@@ -66,7 +69,7 @@ public class ExitPage extends JFrame {
                 System.out.println("Unable to write to file: " + JSON_STORE);
             }
             removePanel();
-            client.printLog();
+            lp.printLogSafe();
             System.exit(0);
         }
     }

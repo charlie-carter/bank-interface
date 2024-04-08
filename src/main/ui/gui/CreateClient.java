@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // This class generates a page for a client to sign up at the bank.
-public class CreateClient extends JFrame {
+public class CreateClient extends ExitingJFrame {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 100;
     private FontBook fb = new FontBook();
@@ -20,6 +20,7 @@ public class CreateClient extends JFrame {
     public CreateClient() {
         super("Bank of UBC");
         initializeGraphics();
+        setLocationRelativeTo(null);
         setVisible(true);
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

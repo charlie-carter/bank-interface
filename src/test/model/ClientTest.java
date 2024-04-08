@@ -45,7 +45,7 @@ class ClientTest {
     @Test
     void testAddAccount() {
         assertEquals(testAccounts, testClient.getAccounts());
-        testClient.addAccount(testAccount1);
+        testClient.addAccount(testAccount1, true);
         testAccounts.add(testAccount1);
         assertEquals(testAccounts, testClient.getAccounts());
 
@@ -54,11 +54,11 @@ class ClientTest {
     @Test
     void testAddMultipleAccounts() {
         assertEquals(testAccounts, testClient.getAccounts());
-        testClient.addAccount(testAccount1);
+        testClient.addAccount(testAccount1, true);
         testAccounts.add(testAccount1);
         assertEquals(testAccounts, testClient.getAccounts());
-        testClient.addAccount(testAccount2);
-        testClient.addAccount(testAccount3);
+        testClient.addAccount(testAccount2, true);
+        testClient.addAccount(testAccount3, true);
         testAccounts.add(testAccount2);
         testAccounts.add(testAccount3);
         assertEquals(testAccounts, testClient.getAccounts());
@@ -66,7 +66,7 @@ class ClientTest {
     @Test
     void testAddAsset() {
         assertEquals(testAssets, testClient.getAssets());
-        testClient.addAsset(testBond);
+        testClient.addAsset(testBond, true);
         testAssets.add(testBond);
         assertEquals(testAssets, testClient.getAssets());
 
@@ -75,11 +75,11 @@ class ClientTest {
     @Test
     void testAddMultipleAssets() {
         assertEquals(testAssets, testClient.getAssets());
-        testClient.addAsset(testBond);
+        testClient.addAsset(testBond, true);
         testAssets.add(testBond);
         assertEquals(testAssets, testClient.getAssets());
-        testClient.addAsset(testStock);
-        testClient.addAsset(testGIC);
+        testClient.addAsset(testStock, true);
+        testClient.addAsset(testGIC, true);
         testAssets.add(testStock);
         testAssets.add(testGIC);
         assertEquals(testAssets, testClient.getAssets());
@@ -99,10 +99,10 @@ class ClientTest {
 
     @Test
     void testToJson() {
-        testClient.addAsset(testStock);
-        testClient.addAsset(testBond);
-        testClient.addAccount(testAccount1);
-        testClient.addAccount(testAccount2);
+        testClient.addAsset(testStock, true);
+        testClient.addAsset(testBond, true);
+        testClient.addAccount(testAccount1, true);
+        testClient.addAccount(testAccount2, true);
 
         JSONObject testObject = testClient.toJson();
 

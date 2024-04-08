@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 public class CreateGIC extends JFrame {
     public static final int WIDTH = 300;
     public static final int HEIGHT = 300;
-    private FontBook fb = new FontBook();
     private Client client;
     private JLabel value = new JLabel("Value ($)");
     private JLabel rate = new JLabel("Rate (%)");
@@ -64,7 +63,7 @@ public class CreateGIC extends JFrame {
                 int termInt = Integer.parseInt(termField.getText());
 
                 GIC tempGIC = new GIC(termInt, redeemable.isSelected(), rateDouble, valueDouble);
-                client.addAsset(tempGIC);
+                client.addAsset(tempGIC, true);
                 removePanel();
             }
         });

@@ -15,26 +15,17 @@ public class AssetGUI extends JFrame {
     private Asset asset;
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 300;
-    private ClientGUI superPage;
-    private String pageTitle;
-
     private FontBook fb = new FontBook();
     private JPanel detailsPanel = new JPanel();
     private JLabel secured;
-    private Bond emptyBond = new Bond(0.0, 0, "Boeing", 3, true);
-    private Stock emptyStock = new Stock("BA", 1, 1, 1, true);
-    private GIC emptyGIC = new GIC(30, false, 8, 5);
 
-    public AssetGUI(Asset a, ClientGUI c) {
+
+    public AssetGUI(Asset a) {
         super("Asset: #" + a.getAccountNumber());
         this.asset = a;
         openAccountPage();
-        superPage = c;
         detailsPanel.setLayout(new GridLayout(0,1));
-
         secured.setFont(fb.getHeaderOne());
-
-
     }
 
     //MODIFIES: this
@@ -42,7 +33,7 @@ public class AssetGUI extends JFrame {
     private void openAccountPage() {
         setLayout(new BorderLayout(15, 15));
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setLocationRelativeTo(superPage);
+
         setVisible(true);
 
         printAssetInfo();
@@ -56,6 +47,9 @@ public class AssetGUI extends JFrame {
         assetInfo.setLayout(new GridLayout(0, 1, 15, 2));
         assetInfo.setSize(new Dimension(0, 0));
         assetInfo.setBorder(new EmptyBorder(10, 10, 10, 10));
+        Bond emptyBond = new Bond(0.0, 0, "Boeing", 3, true);
+        Stock emptyStock = new Stock("BA", 1, 1, 1, true);
+        GIC emptyGIC = new GIC(30, false, 8, 5);
 
         if (asset.getClass() == emptyBond.getClass()) {
             Bond tempBond = (Bond) asset;

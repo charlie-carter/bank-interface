@@ -25,19 +25,22 @@ public class Client {
         this.password = password;
         this.accounts = new ArrayList<>();
         this.assets = new ArrayList<>();
-        EventLog.getInstance().logEvent(new Event("New Client Created"));
     }
 
     //Getters and setters
-    public void addAccount(Account account) {
+    public void addAccount(Account account, boolean log) {
         accounts.add(account);
-        EventLog.getInstance().logEvent(new Event("Added Account #"
-                + account.getAccountNumber() + " - " + account.getAccountInfo()));
+        if (log) {
+            EventLog.getInstance().logEvent(new Event("Added Account #"
+                    + account.getAccountNumber() + " - " + account.getAccountInfo()));
+        }
     }
 
-    public void addAsset(Asset asset) {
+    public void addAsset(Asset asset, boolean log) {
         assets.add(asset);
-        EventLog.getInstance().logEvent(new Event("Added " + asset.getAsset()));
+        if (log) {
+            EventLog.getInstance().logEvent(new Event("Added " + asset.getAsset()));
+        }
     }
 
     public String getName() {
@@ -93,9 +96,5 @@ public class Client {
         return jsonArray;
     }
 
-    public void printLog() {
-        for (Event e : EventLog.getInstance()) {
-            System.out.println(e.toString());
-        }
-    }
+
 }

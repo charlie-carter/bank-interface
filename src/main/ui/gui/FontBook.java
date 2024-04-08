@@ -2,6 +2,9 @@ package ui.gui;
 
 import java.awt.*;
 
+
+//TODO: This could be refactored to be singleton
+
 public class FontBook {
     private Font titleFont = new Font("Helvetica", Font.BOLD,28);
     private Font subFont = new Font("Helvetica", Font.BOLD,22);

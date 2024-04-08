@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 public class CreateAccount extends JFrame {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 80;
-    private FontBook fb = new FontBook();
     private Client client;
     private JLabel amount = new JLabel("Amount ($)");
     private JTextField amountField = new JTextField();
@@ -44,7 +43,7 @@ public class CreateAccount extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double amt = Double.parseDouble(amountField.getText());
-                client.addAccount(new SavingsAccount(amt));
+                client.addAccount(new SavingsAccount(amt), true);
                 removePanel();
             }
         });
@@ -53,7 +52,7 @@ public class CreateAccount extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double amt = Double.parseDouble(amountField.getText());
-                client.addAccount(new ChequingAccount(amt));
+                client.addAccount(new ChequingAccount(amt), true);
                 removePanel();
             }
         });

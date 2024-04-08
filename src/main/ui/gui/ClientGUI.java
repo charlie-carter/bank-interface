@@ -12,11 +12,10 @@ import java.awt.event.ActionListener;
 // This class generates the main menu for the banking interface.
 // It has buttons to look further into any of the client's accounts or assets,
 // it also has the options to change the client password, refresh the page, and leave the application
-public class ClientGUI extends JFrame {
+public class ClientGUI extends ExitingJFrame {
     public static final int WIDTH = 700;
     public static final int HEIGHT = 400;
     private Client client;
-    private ClientGUI thisPage;
     private FontBook fb = new FontBook();
     private ImageIcon ubcLogo;
     private JLabel imageLabel;
@@ -25,8 +24,6 @@ public class ClientGUI extends JFrame {
         super("Bank of UBC");
         this.client = c;
         initializeGraphics();
-        thisPage = this;
-
     }
 
     //MODIFIES: this
@@ -119,13 +116,14 @@ public class ClientGUI extends JFrame {
 
     //EFFECTS: Opens a new window to create a new account
     private void newAccountWindow(Account a) {
-        new AccountGUI(a, thisPage);
+        new AccountGUI(a);
     }
 
     //EFFECTS: Opens a new window to create a new asset
     private void newAssetWindow(Asset a) {
-        new AssetGUI(a, thisPage);
+        new AssetGUI(a);
     }
+
 
     //EFFECTS: Listens for new account button press
     private class NewAccount implements ActionListener {

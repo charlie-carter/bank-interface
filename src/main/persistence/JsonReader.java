@@ -2,8 +2,6 @@ package persistence;
 
 
 import model.Client;
-import model.Event;
-import model.EventLog;
 import model.accounts.ChequingAccount;
 import model.accounts.SavingsAccount;
 import model.assets.Bond;
@@ -33,7 +31,6 @@ public class JsonReader {
     public Client read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        EventLog.getInstance().logEvent(new Event("Data Read From File"));
         return parseClient(jsonObject);
     }
 
@@ -101,7 +98,7 @@ public class JsonReader {
         boolean secured = jsonObject.getBoolean("secured");
 
         Bond bond = new Bond(value, yom, issuer, yield, secured);
-        c.addAsset(bond);
+        c.addAsset(bond, false);
     }
 
     // MODIFIES: c
@@ -114,7 +111,7 @@ public class JsonReader {
         boolean secured = jsonObject.getBoolean("secured");
 
         Stock stock = new Stock(ticker, shares, value, interest, secured);
-        c.addAsset(stock);
+        c.addAsset(stock, false);
     }
 
     // MODIFIES: c
@@ -126,7 +123,7 @@ public class JsonReader {
         boolean secured = jsonObject.getBoolean("redeemable");
 
         GIC gic = new GIC(term, secured, interest, value);
-        c.addAsset(gic);
+        c.addAsset(gic, false);
     }
 
 
@@ -141,11 +138,11 @@ public class JsonReader {
         if (type.equals("Savings")) {
             SavingsAccount account = new SavingsAccount(balance);
             account.setAccountNumber(accountNum);
-            c.addAccount(account);
+            c.addAccount(account, false);
         } else {
             ChequingAccount account = new ChequingAccount(balance);
             account.setAccountNumber(accountNum);
-            c.addAccount(account);
+            c.addAccount(account, false);
         }
     }
 }

@@ -13,7 +13,6 @@ public class CreateStock extends JFrame {
 
     public static final int WIDTH = 400;
     public static final int HEIGHT = 300;
-    private FontBook fb = new FontBook();
     private Client client;
     private JLabel ticker = new JLabel("Stock (Ticker)");
     private JLabel value = new JLabel("Value ($)");
@@ -70,7 +69,7 @@ public class CreateStock extends JFrame {
                 String tickerString = tickerField.getText();
 
                 Stock tempStock = new Stock(tickerString, sharesInt, valueDouble, rateDouble, secured.isSelected());
-                client.addAsset(tempStock);
+                client.addAsset(tempStock, true);
                 removePanel();
 
             }
