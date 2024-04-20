@@ -13,11 +13,8 @@ import java.util.Random;
 public class Client {
     ArrayList<Account> accounts;
     ArrayList<Asset> assets;
-
-    private String name;
-    //private int clientNumber;
+    private final String name;
     private String password;
-    Random rnd = new Random();
 
     public Client(String name, String password) {
         this.name = name;

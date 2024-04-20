@@ -74,10 +74,10 @@ public class BondTest {
     }
 
     @Test
-    void testEquals() {
-        assertTrue(testBond.equals(testBond));
-        assertFalse(testBond.equals(testBond3));
-        assertFalse(testBond.equals(testStock));
+    void testOverriddenEquals() {
+        assertEquals(testBond, testBond);
+        assertNotEquals(testBond, testBond3);
+        assertNotEquals(testBond, testStock);
     }
 
 

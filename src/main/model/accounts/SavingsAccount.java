@@ -41,7 +41,7 @@ public class SavingsAccount extends Account {
     //EFFECTS: Adds the account's interest rate to the balance when called
     public void addInterest() {
         BigDecimal interestMultiplier = BigDecimal.valueOf((interest / 100) + 1);
-        super.balance = super.balance.multiply(interestMultiplier).setScale(2, RoundingMode.DOWN);;
+        super.balance = super.balance.multiply(interestMultiplier).setScale(2, RoundingMode.DOWN);
 
     }
 

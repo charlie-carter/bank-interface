@@ -17,6 +17,6 @@ public class LogPrinter {
         for (Event e : EventLog.getInstance()) {
             System.out.println("\n" + e.toString());
         }
-        //System.exit(0);
+        
     }
 }

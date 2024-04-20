@@ -40,16 +40,22 @@ public class BankUserInterface {
             printMainMenu();
             menuPage = input.next();
 
-            if (menuPage.equals("1")) {
-                accountMenu();
-            } else if (menuPage.equals("2")) {
-                assetMenu();
-            } else if (menuPage.equals("3")) { //trycatch, InputMismatchException
-                changePassword();
-            } else if (menuPage.equals("q")) {
-                running = false;
-            } else {
-                System.out.println("Invalid selection, please choose from the following:");
+            switch (menuPage) {
+                case "1":
+                    accountMenu();
+                    break;
+                case "2":
+                    assetMenu();
+                    break;
+                case "3":  //trycatch, InputMismatchException
+                    changePassword();
+                    break;
+                case "q":
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid selection, please choose from the following:");
+                    break;
             }
         }
     }
@@ -136,17 +142,22 @@ public class BankUserInterface {
     private void accountOptions(Account a) {
         System.out.println("Account number: " + a.getAccountNumber());
         System.out.println("Account balance: " + a.getBalance());
+        label:
         while (true) {
             System.out.println("d to deposit, w to withdraw, i to see account info, q to exit");
             String selection = input.next();
-            if (selection.equals("q")) {
-                break;
-            } else if (selection.equals("d")) {
-                depositMoney(a);
-            } else if (selection.equals("w")) {
-                withdrawMoney(a);
-            } else if (selection.equals("i")) {
-                seeAccountInfo(a);
+            switch (selection) {
+                case "q":
+                    break label;
+                case "d":
+                    depositMoney(a);
+                    break;
+                case "w":
+                    withdrawMoney(a);
+                    break;
+                case "i":
+                    seeAccountInfo(a);
+                    break;
             }
         }
     }
@@ -212,20 +223,25 @@ public class BankUserInterface {
 
     //UI to add a new asset under the current client
     private void newAsset() {
+        label:
         while (true) {
             System.out.println("Enter b for Bond");
             System.out.println("Enter g for GIC");
             System.out.println("Enter s for Stock");
             System.out.println("q to quit");
             String assetOption = input.next();
-            if (assetOption.equals("q")) {
-                break;
-            } else if (assetOption.equals("b")) {
-                newBond();
-            } else if (assetOption.equals("g")) {
-                newGIC();
-            } else if (assetOption.equals("s")) {
-                newStock();
+            switch (assetOption) {
+                case "q":
+                    break label;
+                case "b":
+                    newBond();
+                    break;
+                case "g":
+                    newGIC();
+                    break;
+                case "s":
+                    newStock();
+                    break;
             }
 
         }

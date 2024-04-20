@@ -126,20 +126,13 @@ class ClientTest {
     }
 
     @Test
-    void testEquals() {
-        assertTrue(testAccount1.equals(testAccount1));
-        assertFalse(testAccount1.equals(testAccount2));
-        assertFalse(testAccount1.equals(testAccount3));
-        assertFalse(testAccount1.equals(testGIC));
-        assertFalse(testStock.equals(testGIC));
+    void testOverriddenEquals() {
+        assertEquals(testAccount1, testAccount1);
+        assertNotEquals(testAccount1, testAccount2);
+        assertNotEquals(testAccount1, testAccount3);
+        assertNotEquals(testAccount1, testGIC);
+        assertNotEquals(testStock, testGIC);
     }
-//
-//    @Test
-//    void testAssetsToJson() {
-//        testClient.addAsset(testStock);
-//        testClient.addAsset(testBond);
-//        JSONArray testArray = testClient.assetsToJson();
-//    }
 
     // MODIFIES: client
     // EFFECTS: parses accounts from JSON object and adds them to client

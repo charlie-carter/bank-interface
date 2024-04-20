@@ -28,21 +28,24 @@ public class LoadClientInterface {
 
         System.out.println("Welcome to the bank!");
 
+        label:
         while (true) {
             System.out.println("\t 'l' to load saved information");
             System.out.println("\t 'n' to create new client");
             System.out.println("\t 'q' to close application");
             String userChoice = input.next();
-            if (userChoice.equals("l")) {
-                loadClient();
-                break;
-            } else if (userChoice.equals("n")) {
-                newClient();
-                break;
-            } else if (userChoice.equals("q")) {
-                break;
-            } else {
-                System.out.println("Invalid choice");
+            switch (userChoice) {
+                case "l":
+                    loadClient();
+                    break label;
+                case "n":
+                    newClient();
+                    break label;
+                case "q":
+                    break label;
+                default:
+                    System.out.println("Invalid choice");
+                    break;
             }
         }
     }

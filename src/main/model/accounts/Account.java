@@ -20,8 +20,7 @@ public abstract class Account implements Writable {
     Random rnd = new Random();
 
     Account(BigDecimal amount) {
-        this.balance = amount.setScale(2, RoundingMode.DOWN);;
-        balance.setScale(2, RoundingMode.DOWN);
+        this.balance = amount.setScale(2, RoundingMode.DOWN);
         this.accountNumber = 100000 + rnd.nextInt(900000);
     }
 
