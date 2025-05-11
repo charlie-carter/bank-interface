@@ -69,7 +69,3 @@ share the fields as much as possible, although this will ultimately lead to some
 some fields NA or blank, as some types of assets just have more information that comes along with 
 them. 
 
-
-
-## For grader:
-### Username is "John Lastname", password is "password123"
